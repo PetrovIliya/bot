@@ -8,7 +8,7 @@
   $name = $result["message"]["from"]["username"];
   if($text) {
     if ($text == "/start") {
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать' . $name["firstName"] ]);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать' . $name ]);
     }  elseif ($text == "/sayHello") {
          $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Hello World" ]);
       } else {
@@ -16,10 +16,5 @@
       }
   }
 
-  if($name){
-     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "there is some name" ]);
-  }else {
-    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "no name" ]);
-  }
 
 ?>
