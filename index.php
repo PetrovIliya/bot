@@ -15,6 +15,6 @@
       	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Отправьте текстовое сообщение." ]);
       }
   }
-  var_dump($name.$name);
+  var_dump($text);
 
 ?>
