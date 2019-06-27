@@ -1,2 +1,1 @@
-# bot
-study
+# MediaBot

@@ -1,3 +1,4 @@
 <?php
-  echo "hello";
+  php composer.phar install;
+  echo"hello";
 ?>
