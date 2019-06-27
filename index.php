@@ -16,4 +16,10 @@
       }
   }
 
+  if($name){
+     $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "there is some name" ]);
+  }else {
+    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "no name" ]);
+  }
+
 ?>
