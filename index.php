@@ -7,13 +7,15 @@
   $chat_id = $result["message"]["chat"]["id"];  
   $name = $result["message"]["from"]["username"];
   if($text) {
-    if ($text == "/start") {
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать' . $name ]);
-    }  elseif ($text == "/sayHello") {
-         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Hello World" ]);
-      } else {
-      	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Отправьте текстовое сообщение." ]);
-      }
+    if ($text == "/start" and $name) {
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать ' . $name . '!' ]);
+    } elseif($text == "/start" and !$name) {
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать незнакомец!' ]);
+    } elseif ($text == "/sayHello") {
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Hello World" ]);
+    } else {
+     	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Отправьте текстовое сообщение." ]);
+    }
   }
 
 
