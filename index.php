@@ -1,8 +1,12 @@
 <?php
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   $url = 'https://api.telegram.org/bot' . TOKEN . '/getUpdates';
-  $response = file_get_contents($url);
-  var_dump($response);
+  $response = json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
+  if($response['ok']) {
+    foreach($response['result'] as $update) {
+      echo $update['message']['text'];
+    }
+  }
 
   /*include('vendor/autoload.php'); 
   use Telegram\Bot\Api; 
