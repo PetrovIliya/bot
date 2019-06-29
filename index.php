@@ -1,6 +1,6 @@
 <?php
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
-  $url = 'https://api.telegram.org' . TOKEN . '/getUpdates';
+  $url = 'https://api.telegram.org/bot' . TOKEN . '/getUpdates';
   echo $url;
 
   /*include('vendor/autoload.php'); 
