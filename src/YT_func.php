@@ -101,9 +101,12 @@ class YouTubeVideo
         return $response; //массив объектов Google_Service_YouTube_Video
 
     }
+ }
+
+    return $dataset;
 }
 
-  public function getDataVideo(array $videos){
+public function getDataVideo(array $videos){
 
     $dataset = [];
     array_walk($videos, function ($value) use (&$dataset){
@@ -120,9 +123,6 @@ class YouTubeVideo
 
         ];
     });
-
-    return $dataset;
-}
 
    $video = new YouTubeVideo();
 ?>
