@@ -5,7 +5,7 @@ class YouTubeVideo
 
     public $id; //id видео
 
-    private $apiKey = 'AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8';
+    private $apiKey = 'AIzaSyAck9hXA-ov9ar1toE9u0MgmCiR-Xazqj8';
 
     private $youtube;
 
