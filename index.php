@@ -9,16 +9,10 @@
     } else {
       $url = BASE_URL . $method;
     }
-    
     return  json_decode(file_get_contents('$url'), JSON_OBJECT_AS_ARRAY);
   }
-
-  while(!$update) {
-  
-    
-  var_dump($update);
-  
-  }
+  $chat_id = $updates['message']['chat']['id'];
+  $sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'test'])
     
     
   /*include('vendor/autoload.php'); 
