@@ -4,7 +4,9 @@
   require_once('src/YT_func.php');
   require_once('src/TG_func.php');
   
-  switch ($request): 
+  $requestWords = str_word_count($request, 1, '/');
+  
+  switch ($requestWords[0]): 
     case '/start': 
       $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                                      'resize_keyboard' => true,
