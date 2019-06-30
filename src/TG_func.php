@@ -8,5 +8,14 @@
     }
     return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
   }
+
+  function sendVideos($data, $quantity) {
+            for($i=0; $i <= $quantity; $i++) {
+               $video_titles[$i] = $data -> item[$i] ->snippet['title'];
+               $video_ids[$i] = $data -> items[$i] -> id['videoId']; 
+               sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $video_titles[$i] ]); 
+               sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $video_ids[$i] ]); 
+            }
+          }
  
 ?>
