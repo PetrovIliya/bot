@@ -6,11 +6,7 @@
   $request = $update['message']['text'];
   $user_first_name = $update['message']['from']['first_name'];
   $user_last_name = $update['message']['from']['last_name'];
-  if(file_get_contents('php://input')) {
-    echo "good";
-  } else {
-    echo "bad";
-  }
+  $comands = ['/start', '/help'];
 
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
@@ -22,8 +18,14 @@
   }
   
   if ($request = '/start') {
-    sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Добро пожаловать' . $user_first_name . $user_last_name . '!']);
-  }  
+    sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!']);
+  } elseif ($request = '/help') {
+    foreach($comands as $comand) {
+      sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $comand . ' ']);
+    }
+  } else {
+    sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
+  }
   
  /*    
  include('vendor/autoload.php'); 
