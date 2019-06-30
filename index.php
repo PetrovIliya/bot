@@ -29,7 +29,7 @@
            //$dataBySearch = $video->search($requestWords[1], $requestWords[2]); 
         } elseif(!is_numeric($requestWords[2]) {
            sendRequest('sendMessage', ['chat_id' => $chat_id,
-                                       'text' => '\"количество\" - должно быть целым числом']);
+                                       'text' => 'количество - должно быть целым числом']);
         } else {
           sendRequest('sendMessage', ['chat_id' => $chat_id,
                                        'text' => '\"количество\" - не может превышать'. MAX_VIDEOS]);
