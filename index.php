@@ -37,6 +37,10 @@
   $dataBySearch = $video->search('космос', 1); 
   json_decode($dataBySearch, JSON_OBJECT_AS_ARRAY); 
   //$dataBySearch = $video->getDataVideo($dataBySearch->getItems());
+ $videoId = $dataBySearch['items']['modelData'];
+ var_dump($videoId); 
+
+/*
 ?>
   <pre>
 <?php
@@ -44,7 +48,7 @@
 ?>
 </pre>
 <?php
-  /*
+  
   $videoId = $dataBySearch['id'];
   var_dump($videoId); */
 
