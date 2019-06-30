@@ -2,7 +2,12 @@
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
-  
+  if(file_get_contents('php://input')) {
+    echo "good";
+  } else {
+    echo "bad";
+  }
+
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
       $url = BASE_URL . $method . '?' . http_build_query($params);
@@ -13,7 +18,7 @@
   }
   $chat_id = $update['message']['chat']['id'];
   sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'test']);
-  var_dump($_POST);
+  
  /*    
  include('vendor/autoload.php'); 
   use Telegram\Bot\Api; 
