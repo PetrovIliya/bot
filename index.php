@@ -25,11 +25,11 @@
       if($requestWords[1] && $requestWords[2]) {
         if(is_numeric($requestWords[2]) && $requestWords[2] <= MAX_VIDEOS){
            //$dataBySearch = $video->search($requestWords[1], $requestWords[2]); 
-          echo 'hello';
+          
         } elseif(!is_numeric($requestWords[2])) {
             sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' =>  '"количество" - должно быть целым числом']);
         } else {
-          sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => '\"количество\" - не может превышать'. MAX_VIDEOS]);
+          sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => '"количество" - не может превышать ' . MAX_VIDEOS]);
         }     
       } else {
         sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'не верно указаны параметры']);
@@ -40,17 +40,17 @@
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
   endswitch;
   
- //$dataBySearch = $video->search('космос', 2); 
+  //$dataBySearch = $video->search('космос', 2); 
   // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
-//$video_title = $dataBySearch -> item[0];
- //$video_ids = $dataBySearch -> items[0] -> id['videoId'];
+  //$video_titles = $dataBySearch -> item[0] -> 'snippet'['title'];
+  //$video_ids = $dataBySearch -> items[0] -> id['videoId'];
  
 
 
 ?>
   <pre>
 <?php
-// var_dump($video_title);  
+// var_dump($video_titles);  
 ?>
 </pre>
 <?php
