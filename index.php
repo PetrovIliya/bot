@@ -4,7 +4,6 @@
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
-
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
   $chat_id = $update['message']['chat']['id'];
   $request = $update['message']['text'];
@@ -19,10 +18,8 @@
              ];
  $video_id = '0KSOMA3QBU0';
  $api_key = 'AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8';
-
 $json_result = file_get_contents ('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='.$video_id.'&key='.$api_key);
 var_dump(json_decode($json_result));
-
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
       $url = BASE_URL . $method . '?' . http_build_query($params);
@@ -47,5 +44,4 @@ var_dump(json_decode($json_result));
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
   }
   
-
 ?>
