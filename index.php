@@ -34,9 +34,11 @@
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
   }
 
-  $dataBySearch = $video->search('космос'); 
+  $dataBySearch = $video->search('космос', 1); 
   json_decode(file_get_contents($dataBySearch), JSON_OBJECT_AS_ARRAY);
+  <pre>
   var_dump($dataBySearch);
+  </pre>
 
 
 ?>
