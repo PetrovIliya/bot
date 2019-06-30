@@ -22,9 +22,11 @@
       }
       break;
     case 'видео':
-      sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $requestWords[0] . $requestWords[1] . $requestWords[2]]);
       if($requestWords[1] && $requestWords[2]) {
-        sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'video']);
+        if(is_numeric($requestWords[2]) && $requestWords[2] <= MAX_VIDEOS){
+           //$dataBySearch = $video->search($requestWords[1], $requestWords[2]); 
+           sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'video']);
+        }  
       }
       /*
       sendRequest('sendMessage', ['chat_id' => $chat_id,'text' => 'видео']);
