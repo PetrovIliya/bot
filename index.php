@@ -3,7 +3,6 @@
   require_once('src/info.php');
   require_once('src/YT_func.php');
 
-  $count = 1;
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
       $url = BASE_URL . $method . '?' . http_build_query($params);
@@ -22,10 +21,9 @@
                                                   ]); 
     
    sendRequest('sendMessage', ['chat_id' => $chat_id, 
-                               'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!' . $count,
+                               'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!',
                                'reply_markup' => $reply_markup 
                               ]);
-    $count += 1;
     
     
   } elseif ($request == '/help') {
