@@ -1,7 +1,7 @@
 <?php
-  require_once('vendor/autoload.php'); 
-  require_once('src/YT_func.php');
-  require_once('src/info.php');
+  include('vendor/autoload.php'); 
+  include('src/YT_func.php');
+  include('src/info.php');
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
   use Telegram\Bot\Api; 
 
