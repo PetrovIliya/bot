@@ -12,8 +12,13 @@
     
     return  json_decode(file_get_contents('$url'), JSON_OBJECT_AS_ARRAY);
   }
-   if($update){  
-  var_dump($update); }
+
+  while(!$update) {
+  
+    
+  var_dump($update);
+  
+  }
     
     
   /*include('vendor/autoload.php'); 
