@@ -4,6 +4,9 @@
   require_once('src/YT_func.php');
   require_once('src/TG_func.php')
  
+  if($request) {
+    checkRequest($request);
+  }  
 
  $dataBySearch = $video->search('космос', 2); 
   // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
