@@ -1,6 +1,6 @@
 <?php
-  require_oncerequire_oncerequire_once('vendor/autoload.php'); 
-  require_oncerequire_once('src/YT_func.php');
+  require_once('vendor/autoload.php'); 
+  require_once('src/YT_func.php');
   require_once('src/info.php');
   use Telegram\Bot\Api; 
 
