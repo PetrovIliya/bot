@@ -136,7 +136,5 @@ class YouTubeVideo
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
   }
 
-  $dataById = $video->videosByIds('FBnAZnfNB6U');
-  var_dump($dataById);
 
 ?>
