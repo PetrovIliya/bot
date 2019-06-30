@@ -1,6 +1,8 @@
 <?php
   include('vendor/autoload.php'); 
+
   use Telegram\Bot\Api; 
+  const YT_KEY = 'AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8';
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
@@ -16,10 +18,17 @@
                '/видео название видео - поиск видео',
                '/музыка название песни - поиск музыки'
              ];
- $video_id = '0KSOMA3QBU0';
- $api_key = 'AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8';
-$json_result = file_get_contents ('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='.$video_id.'&key='.$api_key);
-var_dump(json_decode($json_result));
+  $client = new Google_Client();
+  $client->setApplicationName("Client_Library_Examples");
+  $client->setDeveloperKey(YT_KEY);
+  $service = new Google_Service_Books($client);
+  $optParams = array('filter' => 'free-ebooks');
+  $results = $service->volumes->listVolumes('Henry David Thoreau', $optParams);
+  
+  foreach ($results as $item) {
+    echo $item['volumeInfo']['title'], "<br /> \n";
+  }
+
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
       $url = BASE_URL . $method . '?' . http_build_query($params);
@@ -28,13 +37,15 @@ var_dump(json_decode($json_result));
     }
     return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
   }
-  
+
   if ($request == '/start') {
-    $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]); 
-    sendRequest('sendMessage', [
-	                         'chat_id' => $chat_id, 
-	                         'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!',
-                                 'reply_markup' => $reply_markup 
+   $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
+                                                   'resize_keyboard' => true,
+                                                   'one_time_keyboard' => false ]); 
+   sendRequest('sendMessage', [
+                             'chat_id' => $chat_id, 
+                             'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!',
+                             'reply_markup' => $reply_markup 
                                ]);
   } elseif ($request == '/help') {
     foreach($comands as $comand) {
@@ -43,5 +54,5 @@ var_dump(json_decode($json_result));
   } else {
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
   }
-  
+
 ?>
