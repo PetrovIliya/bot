@@ -2,7 +2,7 @@
   require_once('vendor/autoload.php'); 
   require_once('src/info.php');
   require_once('src/YT_func.php');
-  require_once('src/TG_func.php')
+  require_once('src/TG_func.php');
  
   if($request) {
     checkRequest($request);
