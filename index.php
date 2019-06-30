@@ -36,8 +36,8 @@
 
   $dataBySearch = $video->search('космос', 1); 
   json_decode(file_get_contents($dataBySearch), JSON_OBJECT_AS_ARRAY); 
-  $videoId = $dataBySearch['etag'];
-  echo $videoId
+  $videoId = $dataBySearch['items']['id']['videoId'];
+  echo $videoId;
 
 
 ?>
