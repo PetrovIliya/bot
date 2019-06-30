@@ -21,6 +21,9 @@
         sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $comand . ' ']);
       }
       break;
+    case 'видео':
+      sendRequest('sendMessage', ['chat_id' => $chat_id,
+                                  'text' => 'видео']);
     default: 
       sendRequest('sendMessage', ['chat_id' => $chat_id,
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
@@ -29,6 +32,7 @@
  $dataBySearch = $video->search('космос', 2); 
   // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
  $video_ids = $dataBySearch -> items[0] -> id['videoId'];
+var_dump($video_ids);
 
 
 /*
