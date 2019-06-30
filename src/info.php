@@ -4,6 +4,7 @@
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const YT_URL = 'https://www.youtube.com/watch?v=';
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя/';
+  const MAX_VIDEOS = 10;
   use Telegram\Bot\Api;
 
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
@@ -13,10 +14,10 @@
   $user_first_name = $update['message']['from']['first_name'];
   $user_last_name = $update['message']['from']['last_name'];
   $keyboard = [["команды"]];
-  $comands = [
+  $comands = [ 'кавычки служат только для обозначения разделов команд, набирать их не стоит' 
                '/start - начало работы',
                'команды - список команд',
-               'видео название видео количество - поиск видео',
-               'музыка название песни - поиск музыки'
+               '''видео'' ''название видео'' ''количество'' - поиск видео',
+               '''музыка'' ''название песни'' - поиск музыки'
              ];
 ?>
