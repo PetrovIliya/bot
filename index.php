@@ -36,7 +36,7 @@
 
   $dataBySearch = $video->search('космос', 1); 
   // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
- $items = $dataBySearch -> items[0] -> id;
+ $items = $dataBySearch -> items[0] -> id['videoId'];
  var_dump($items);
 /*
 ?>
