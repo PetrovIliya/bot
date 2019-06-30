@@ -31,8 +31,9 @@
   
  $dataBySearch = $video->search('космос', 2); 
   // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
+$video_title = $dataBySearch -> item[0];
  $video_ids = $dataBySearch -> items[0] -> id['videoId'];
- $video_title = $dataBySearch -> item[0];
+ 
 
 
 ?>
