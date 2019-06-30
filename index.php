@@ -6,7 +6,10 @@
   $request = $update['message']['text'];
   $user_first_name = $update['message']['from']['first_name'];
   $user_last_name = $update['message']['from']['last_name'];
-  $comands = ['/start', '/help'];
+  $comands = [
+               '/start - начало работы',
+               '/help - список команд'
+             ];
 
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
