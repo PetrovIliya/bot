@@ -34,12 +34,10 @@
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
   }
 
- // $dataBySearch = $video->search('космос', 1); 
- // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
-$some = 'https://www.googleapis.com/youtube/v3/search?part=snippet%20&q=serj&key=AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8';
-$dec = json_decode(file_get_contents($some), JSON_OBJECT_AS_ARRAY);
-$video_id = $dec['items']['id'];
-var_dump($video_id);
+  $dataBySearch = $video->search('космос', 1); 
+  // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
+ $et = $dataBySearch['etag'];
+ echo $et;
 /*
 ?>
   <pre>
