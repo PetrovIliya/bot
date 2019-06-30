@@ -2,7 +2,8 @@
    include('vendor/autoload.php'); 
    use Telegram\Bot\Api; 
    $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
-  
+   $result = $telegram -> getWebhookUpdates(); 
+
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
@@ -29,7 +30,7 @@
   
   if ($request == '/start') {
     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
-    $response = $telegram->sendMessage([
+    $result = $telegram->sendMessage([
 	'chat_id' => $chat_id, 
 	'reply_markup' => $reply_markup
 ]); 
