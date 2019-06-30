@@ -1,13 +1,21 @@
 <?php
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
-  $url = 'https://api.telegram.org/bot' . TOKEN . '/getUpdates';
-  $response = json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
-  if($response['ok']) {
-    foreach($response['result'] as $update) {
-      echo $update['message']['text'];
+  const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
+  $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
+  
+  function sendRequest($method, $params = []) {
+    if(!empty($params)) {
+      $url = BASE_URL . $method . '?' . http_build_query($params);
+    } else {
+      $url = BASE_URL . $method;
     }
+    
+    return  json_decode(file_get_contents('$url'), JSON_OBJECT_AS_ARRAY);
   }
 
+  var_dump($update);
+    
+    
   /*include('vendor/autoload.php'); 
   use Telegram\Bot\Api; 
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0'); 
