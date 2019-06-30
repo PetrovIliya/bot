@@ -1,4 +1,6 @@
 <?php
+   include('vendor/autoload.php'); 
+  
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
@@ -6,9 +8,12 @@
   $request = $update['message']['text'];
   $user_first_name = $update['message']['from']['first_name'];
   $user_last_name = $update['message']['from']['last_name'];
+  $keyboard = [["/музыка"],["/видео"];
   $comands = [
                '/start - начало работы',
-               '/help - список команд'
+               '/help - список команд',
+               '/видео название видео - поиск видео',
+               '/музыка название песни - поиск музыки'
              ];
 
   function sendRequest($method, $params = []) {
@@ -21,6 +26,7 @@
   }
   
   if ($request == '/start') {
+     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!']);
   } elseif ($request == '/help') {
     foreach($comands as $comand) {
@@ -30,25 +36,5 @@
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
   }
   
- /*    
- include('vendor/autoload.php'); 
-  use Telegram\Bot\Api; 
-  $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0'); 
-  $result = $telegram -> getWebhookUpdates(); 
-  $text = $result["message"]["text"];
-  $chat_id = $result["message"]["chat"]["id"];  
-  $name = $result["message"]["from"]["username"];
-  if($text) {
-    if ($text == "/start" and $name) {
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать, ' . $name . '!' ]);
-    } elseif($text == "/start" and !$name) {
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать!' . $result['message']['from']['first_name'] ]);
-    } elseif ($text == "/sayHello") {
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Hello World" ]);
-    } else {
-     	$telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Запрос не является командой" ]);
-    }
-  } 
-   */ 
 
 ?>
