@@ -101,13 +101,9 @@ class YouTubeVideo
         return $response; //массив объектов Google_Service_YouTube_Video
 
     }
- }
-
-    return $dataset;
 }
 
 public function getDataVideo(array $videos){
-
     $dataset = [];
     array_walk($videos, function ($value) use (&$dataset){
 
@@ -120,9 +116,11 @@ public function getDataVideo(array $videos){
             ],
             'viewCount' => $value->toSimpleObject()->statistics['viewCount'] ?? '-',
             'duration' => $this->timeFormatting($value->toSimpleObject()->contentDetails['duration'])
-
         ];
     });
+
+    return $dataset;
+}
 
    $video = new YouTubeVideo();
 ?>
