@@ -1,5 +1,6 @@
 <?php
    include('vendor/autoload.php'); 
+   use Telegram\Bot\Api;
   
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
@@ -26,7 +27,7 @@
   }
   
   if ($request == '/start') {
-     $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+    $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
     sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!']);
   } elseif ($request == '/help') {
     foreach($comands as $comand) {
