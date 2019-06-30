@@ -22,7 +22,7 @@
     default: 
       sendRequest('sendMessage', ['chat_id' => $chat_id,
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
-  endswitch
+  endswitch;
   
  $dataBySearch = $video->search('космос', 2); 
   // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
