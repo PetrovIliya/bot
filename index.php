@@ -38,8 +38,8 @@
  // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
 $some = 'https://www.googleapis.com/youtube/v3/search?part=snippet%20&q=serj&key=AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8';
 $dec = json_decode(file_get_contents($some), JSON_OBJECT_AS_ARRAY);
-var_dump($dec);
-
+$video_id = $dec['id']['videoId'];
+echo $video_id;
 /*
 ?>
   <pre>
