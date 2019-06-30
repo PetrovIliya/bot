@@ -18,9 +18,9 @@
                '/музыка название песни - поиск музыки'
              ];
  $video_id = '0KSOMA3QBU0';
- $api_key = 'AIzaSyDjt37wQAfDI4gmLvOd47FSbgGMOaXoL50';
+ $api_key = 'AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8';
 
-$json_result = file_get_contents ('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=0KSOMA3QBU0&key=AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8');
+$json_result = file_get_contents ('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='.$video_id.'&key='.$api_key);
 var_dump(json_decode($json_result));
 
   function sendRequest($method, $params = []) {
