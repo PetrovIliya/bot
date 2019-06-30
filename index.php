@@ -3,6 +3,9 @@
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
   $chat_id = $update['message']['chat']['id'];
+  $request = $update['message']['text'];
+  $user_first_name = $update['message']['from']['first_name'];
+  $user_last_name = $update['message']['from']['last_name'];
   if(file_get_contents('php://input')) {
     echo "good";
   } else {
@@ -17,8 +20,10 @@
     }
     return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
   }
- 
-  sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'test']);
+  
+  if ($request = '/start') {
+    sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'Добро пожаловать' . $user_first_name . $user_last_name . '!']);
+  }  
   
  /*    
  include('vendor/autoload.php'); 
