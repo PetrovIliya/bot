@@ -5,7 +5,7 @@
   require_once('src/TG_func.php');
  
   if($request) {
-    checkRequest($request);
+    checkRequest();
   }  
 
  $dataBySearch = $video->search('космос', 2); 
