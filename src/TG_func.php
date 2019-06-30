@@ -9,7 +9,7 @@
     return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
   }
 
-  function checkRequest($request, $param) {
+  function checkRequest($request) {
     if ($request == '/start') {
    $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                                    'resize_keyboard' => true,
