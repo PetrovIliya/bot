@@ -11,9 +11,9 @@
     }
     return  json_decode(file_get_contents('$url'), JSON_OBJECT_AS_ARRAY);
   }
- // $chat_id = $updates['message']['chat']['id'];
- // $sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'test']);
- // var_dump($_POST);
+  $chat_id = $update['message']['chat']['id'];
+  $sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'test']);
+  var_dump($_POST);
  /*    
  include('vendor/autoload.php'); 
   use Telegram\Bot\Api; 
