@@ -1,7 +1,7 @@
 <?php
-  include('vendor/autoload.php'); 
-  include('src/YT_func.php');
-  include('src/info.php');
+  require_once('vendor/autoload.php'); 
+  require_once('src/YT_func.php');
+  require_once('src/info.php');
 
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
