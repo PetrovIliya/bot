@@ -101,7 +101,7 @@ class YouTubeVideo
         return $response; //массив объектов Google_Service_YouTube_Video
 
     }
-
-
 }
+
+   $video = new YouTubeVideo();
 ?>
