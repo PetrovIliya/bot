@@ -26,7 +26,7 @@
     if ($text == "/start" and $name) {
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать, ' . $name . '!' ]);
     } elseif($text == "/start" and !$name) {
-      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать, незнакомец!' ]);
+      $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' =>'Добро пожаловать!' . $result['message']['from']['first_name'] ]);
     } elseif ($text == "/sayHello") {
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Hello World" ]);
     } else {
