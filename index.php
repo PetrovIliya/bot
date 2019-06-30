@@ -22,6 +22,7 @@
       }
       break;
     case 'видео':
+      sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $requestWords[0] . $requestWords[1] . $requestWords[2]]);
       if($requestWords[1] && $requestWords[2]) {
         sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'video']);
       }
@@ -57,7 +58,7 @@
 ?>
   <pre>
 <?php
- var_dump($video_title);  
+// var_dump($video_title);  
 ?>
 </pre>
 <?php
