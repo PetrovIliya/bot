@@ -2,9 +2,6 @@
   include('vendor/autoload.php'); 
   include('src/YT_func.php');
   include('src/info.php');
-  
-  use Telegram\Bot\Api; 
-  $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
 
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
