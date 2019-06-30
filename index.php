@@ -36,8 +36,8 @@
 
   $dataBySearch = $video->search('космос', 1); 
   // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
- $et = $dataBySearch['etag'];
- echo $et;
+ $items = $dataBySearch -> items[0];
+ var_dump($items);
 /*
 ?>
   <pre>
