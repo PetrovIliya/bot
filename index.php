@@ -35,7 +35,7 @@
   }
 
   $dataBySearch = $video->search('космос', 1); 
-  $dataBySearch = $this->getDataVideo($dataBySearch->getItems());
+  $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
 
   /*json_decode(file_get_contents($dataBySearch), JSON_OBJECT_AS_ARRAY); 
   $videoId = $dataBySearch['id'];
