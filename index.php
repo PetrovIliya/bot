@@ -8,7 +8,7 @@
   $request = $update['message']['text'];
   $user_first_name = $update['message']['from']['first_name'];
   $user_last_name = $update['message']['from']['last_name'];
-  $keyboard = [["/музыка"],["/видео"];
+  $keyboard = [["/музыка"],["/видео"]];
   $comands = [
                '/start - начало работы',
                '/help - список команд',
