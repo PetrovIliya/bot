@@ -29,16 +29,12 @@
            //$dataBySearch = $video->search($requestWords[1], $requestWords[2]); 
           echo 'hello';
         } elseif(!is_numeric($requestWords[2]) {
-           sendRequest('sendMessage', ['chat_id' => $chat_id,
-                                       'text' => '"количество" - должно быть целым числом'])
+            sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' =>  '"количество" - должно быть целым числом']);
         } else {
-          sendRequest('sendMessage', ['chat_id' => $chat_id,
-                                       'text' => '\"количество\" - не может превышать'. MAX_VIDEOS]);
-        }
-        
+          sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => '\"количество\" - не может превышать'. MAX_VIDEOS]);
+        }     
       } else {
-        sendRequest('sendMessage', ['chat_id' => $chat_id,
-                                       'text' => 'не верно указаны параметры']);
+        sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'не верно указаны параметры']);
       }
     default: 
       sendRequest('sendMessage', ['chat_id' => $chat_id,
