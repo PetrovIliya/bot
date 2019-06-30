@@ -22,7 +22,9 @@
       }
       break;
     case 'видео':
-      sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'video']);
+      if($requestWords[1] && $requestWords[2]) {
+        sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'video']);
+      }
       /*
       sendRequest('sendMessage', ['chat_id' => $chat_id,'text' => 'видео']);
       if($requestWords[1] && $requestWords[2]) {
