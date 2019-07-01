@@ -26,7 +26,7 @@
     case 'видео':
       $query = getQuery($requestWords);
       if($query && $lastWord) {
-        if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
+        if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS && $lastWord > 0){
           $dataBySearch = $video->search($query, $lastWord); 
           sendVideos($dataBySearch, $lastWord, $chat_id);
         } elseif(!is_numeric($lastWord)) {
