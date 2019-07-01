@@ -22,4 +22,5 @@
              ];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
+  $query = getQuery($requestWords);
 ?>
