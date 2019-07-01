@@ -3,7 +3,7 @@
   require_once('src/api.php');
   use Telegram\Bot\Api;
   const MAX_VIDEOS = 10;
-  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяВ/0123456789';  
+  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789';  
   const COMANDS = array('Данный бот находится на стадии разработки, некоторый функционал может быть не доступен',
                         'кавычки служат только для обозначения разделов команд, набирать их не стоит', 
                         'команды - список команд',
@@ -31,13 +31,13 @@
                                  'reply_markup' => $reply_markup]); 
       break;
 
-    case  'команды':
+    case  ('команды' || 'Команды'):
       foreach(COMANDS as $comand) {
         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
       }
       break;
-
-     case ('видео' || 'Видео' ) :
+     
+    case ('видео' || 'Видео'):
       
       $query = getQuery($requestWords);
       if($query && $lastWord) {
