@@ -9,7 +9,7 @@
     return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
   }
 
-  function sendVideos($data, $quantity) {
+  function sendVideos($data, $quantity, $chat_id) {
             for($i=0; $i <= $quantity; $i++) {
                $video_titles[$i] = $data -> item[$i] ->snippet['title'];
                $video_ids[$i] = $data -> items[$i] -> id['videoId']; 
