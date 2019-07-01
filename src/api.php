@@ -3,7 +3,7 @@
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
  
-  function sendRequest($method, $params = []) {
+  function sendRequest($method, $params = []): array {
     if(!empty($params)) {
       $url = TELEGRAM_URL . $method . '?' . http_build_query($params);
     } else {
@@ -19,7 +19,7 @@
             }
   }
 
-  function getQueryForSearch($data) {
+  function getQueryForSearch($data): string {
     $length = count($data) - 1;
     for($i=1; $i<$length; $i++) {
       $result .= $data[$i] . ' ';
