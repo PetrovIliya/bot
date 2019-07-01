@@ -23,8 +23,8 @@
       }
       break;
 
-    case 'видео'; 
-    case 'Видео';
+     case ('видео' || 'Видео' ) :
+      
       $query = getQuery($requestWords);
       if($query && $lastWord) {
         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
