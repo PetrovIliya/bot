@@ -18,6 +18,7 @@
   $keyboard = [["команды"]];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
+  $query = getQueryForSearch($requestWords);
    
   switch ($requestWords[0]): 
   
@@ -39,7 +40,6 @@
      
     case ('видео' || 'Видео'):
       
-      $query = getQuery($requestWords);
       if($query && $lastWord) {
         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
           $dataBySearch = $video->search($query, $lastWord); 
