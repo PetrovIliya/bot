@@ -32,7 +32,8 @@
         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
       }
       break;     
-    case ('видео' || 'Видео'):
+    case 'видео':
+    case 'Видео':
       $query = getQueryForSearch($requestWords);
       if($query && $lastWord) {
         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
