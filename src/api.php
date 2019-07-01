@@ -1,5 +1,11 @@
 <?php
-
+  const YT_KEY = 'AIzaSyBW_jucSlgbrmgdDCV1m7Voy7aE6R1bil8';
+  const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
+  const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
+  const YT_URL = 'https://www.youtube.com/watch?v=';
+  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяВ/0123456789';
+  const MAX_VIDEOS = 10;
+ 
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
       $url = BASE_URL . $method . '?' . http_build_query($params);
@@ -23,5 +29,3 @@
     }
     return $result;
   }
- 
-?>
