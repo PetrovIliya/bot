@@ -24,9 +24,9 @@
       break;
 
     case 'видео':
-      if($requestWords[1] && $lastWord) {
-        if(is_numeric($lastWord) && $requestWords[2] <= MAX_VIDEOS){
-          $dataBySearch = $video->search($requestWords[1], $lastWord); 
+      if($query && $lastWord) {
+        if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
+          $dataBySearch = $video->search($query, $lastWord); 
           sendVideos($dataBySearch, $lastWord, $chat_id);
         } elseif(!is_numeric($lastWord)) {
             sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' =>  '"количество" - должно быть целым числом']);
