@@ -1,12 +1,10 @@
 <?php
   require_once('vendor/autoload.php'); 
-  require_once('src/info.php');
-  require_once('src/YT_func.php');
-  require_once('src/TG_func.php');
- 
+  require_once('src/api.php');
   use Telegram\Bot\Api;
 
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
+  $video = new YouTubeVideo();
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
   $chat_id = $update['message']['chat']['id'];
   $request = $update['message']['text'];
@@ -21,16 +19,15 @@
              ];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
-  
-  
+   
   switch ($requestWords[0]): 
   
-  case '/start': 
+    case '/start': 
       $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
-                                                     'resize_keyboard' => true,
-                                                     'one_time_keyboard' => false]); 
+                                                       'resize_keyboard' => true,
+                                                       'one_time_keyboard' => false]); 
     
-     sendRequest('sendMessage', ['chat_id' => $chat_id, 
+      sendRequest('sendMessage', ['chat_id' => $chat_id, 
                                  'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!',
                                  'reply_markup' => $reply_markup]); 
       break;
