@@ -3,7 +3,7 @@
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const BASE_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const YT_URL = 'https://www.youtube.com/watch?v=';
-  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя/0123456789';
+  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяВ/0123456789';
   const MAX_VIDEOS = 10;
   use Telegram\Bot\Api;
 
