@@ -24,6 +24,7 @@
       break;
 
     case 'видео':
+      $query = getQuery($requestWords);
       if($query && $lastWord) {
         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
           $dataBySearch = $video->search($query, $lastWord); 
