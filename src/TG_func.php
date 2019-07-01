@@ -11,9 +11,9 @@
 
   function sendVideos($data, $quantity, $chat_id) {
             for($i=0; $i <= $quantity; $i++) {
-               $video_titles[$i] = $data -> item[$i] ->snippet['title'];
+             //  $video_titles[$i] = $data -> item[$i] ->snippet['title'];
                $video_ids[$i] = $data -> items[$i] -> id['videoId']; 
-               sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $video_titles[$i] ]); 
+              // sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $video_titles[$i] ]); 
                sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => YT_URL . $video_ids[$i] ]); 
             }
           }
