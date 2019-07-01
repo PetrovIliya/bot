@@ -11,10 +11,10 @@
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
   $video = new YouTubeVideo();
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
-  $chat_id = $update['message']['chat']['id'];
+  $chatId = $update['message']['chat']['id'];
   $request = $update['message']['text'];
-  $user_first_name = $update['message']['from']['first_name'];
-  $user_last_name = $update['message']['from']['last_name'];
+  $userFirstName = $update['message']['from']['first_name'];
+  $userLastName = $update['message']['from']['last_name'];
   $keyboard = [["команды"]];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
@@ -26,14 +26,14 @@
                                                        'resize_keyboard' => true,
                                                        'one_time_keyboard' => false]); 
     
-      sendRequest('sendMessage', ['chat_id' => $chat_id, 
-                                 'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!',
+      sendRequest('sendMessage', ['chat_id' => $chatId, 
+                                 'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $reply_markup]); 
       break;
 
     case  'команды':
       foreach(COMANDS as $comand) {
-        sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $comand . ' ']);
+        sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
       }
       break;
 
@@ -43,19 +43,19 @@
       if($query && $lastWord) {
         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
           $dataBySearch = $video->search($query, $lastWord); 
-          sendVideos($dataBySearch, $lastWord, $chat_id);
+          sendVideos($dataBySearch, $lastWord, $chatId);
         } elseif(!is_numeric($lastWord)) {
-            sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' =>  '"количество" - должно быть целым числом']);
+            sendRequest('sendMessage', ['chat_id' => $chatId, 'text' =>  '"количество" - должно быть целым числом']);
         } else {
-          sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => '"количество" - не может превышать ' . MAX_VIDEOS]);
+          sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - не может превышать ' . MAX_VIDEOS]);
         }     
       } else {
-        sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'не верно указаны параметры']);
+        sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => 'не верно указаны параметры']);
       }
       break;
 
     default: 
-      sendRequest('sendMessage', ['chat_id' => $chat_id,
+      sendRequest('sendMessage', ['chat_id' => $chatId,
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
   endswitch;
   
