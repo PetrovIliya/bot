@@ -18,28 +18,22 @@
   $keyboard = [["команды"]];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
-  $query = getQueryForSearch($requestWords);
-   
   switch ($requestWords[0]): 
-  
     case '/start': 
       $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                                        'resize_keyboard' => true,
                                                        'one_time_keyboard' => false]); 
-    
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMarkup]); 
       break;
-
     case  ('команды' || 'Команды'):
       foreach(COMANDS as $comand) {
         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
       }
-      break;
-     
+      break;     
     case ('видео' || 'Видео'):
-      
+      $query = getQueryForSearch($requestWords);
       if($query && $lastWord) {
         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
           $dataBySearch = $video->search($query, $lastWord); 
