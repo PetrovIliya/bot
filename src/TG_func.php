@@ -16,6 +16,14 @@
               // sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $video_titles[$i] ]); 
                sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => YT_URL . $video_ids[$i] ]); 
             }
-          }
+  }
+
+  function getQuery($data) {
+    $length = count($data) - 1;
+    for(i=1; i<$length; i++) {
+      $result[$i] = $data[$i];
+    }
+    return $result;
+  }
  
 ?>
