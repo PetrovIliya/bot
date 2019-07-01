@@ -1,8 +1,4 @@
 <?php
-  const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
-  const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
-  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяВ/0123456789';
-  const MAX_VIDEOS = 10;
   const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
  
   function sendRequest($method, $params = []) {
