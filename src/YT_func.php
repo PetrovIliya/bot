@@ -44,7 +44,5 @@ class YouTubeVideo
     } 
 }
 
-
-
    $video = new YouTubeVideo();
 ?>
