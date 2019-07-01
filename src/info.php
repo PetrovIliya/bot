@@ -21,5 +21,5 @@
                '"музыка" "название песни" "количество"- поиск музыки'
              ];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
-  $lastKey = end($requestWords);
+  $lastWord = end($requestWords);
 ?>
