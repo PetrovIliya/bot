@@ -4,7 +4,7 @@
   require_once('src/YT_func.php');
   require_once('src/TG_func.php');
   
-  $requestWords = str_word_count($request, 1, EXCEPTIONS);
+  
   
   switch ($requestWords[0]): 
     case '/start': 
