@@ -40,13 +40,6 @@
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
   endswitch;
   
-  //$dataBySearch = $video->search('космос', 2); 
-  // $dataBySearch = $video->getDataVideo($dataBySearch->getItems());
-  //$video_titles = $dataBySearch -> item[0] -> 'snippet'['title'];
-  //$video_ids = $dataBySearch -> items[0] -> id['videoId'];
- 
-
-
 ?>
   <pre>
 <?php
