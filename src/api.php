@@ -3,6 +3,7 @@
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяВ/0123456789';
   const MAX_VIDEOS = 10;
+  const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
  
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
@@ -13,10 +14,10 @@
     return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
   }
 
-  function sendVideos($data, $quantity, $chat_id) {
+  function sendVideos($data, $quantity, $chatId) {
             for($i=0; $i < $quantity; $i++) {
-               $video_ids[$i] = $data -> items[$i] -> id['videoId']; 
-               sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => YT_URL . $video_ids[$i] ]); 
+               $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
+               sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => YOUTUBE_URL . $videoIds[$i] ]); 
             }
   }
 
