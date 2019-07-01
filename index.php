@@ -22,13 +22,13 @@
   switch ($requestWords[0]): 
   
     case '/start': 
-      $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
+      $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                                        'resize_keyboard' => true,
                                                        'one_time_keyboard' => false]); 
     
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
-                                 'reply_markup' => $reply_markup]); 
+                                 'reply_markup' => $replyMarkup]); 
       break;
 
     case  ('команды' || 'Команды'):
