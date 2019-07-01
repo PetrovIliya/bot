@@ -19,10 +19,10 @@
             }
   }
 
-  function getQuery($data) {
+  function getQueryForSearch($data) {
     $length = count($data) - 1;
     for($i=1; $i<$length; $i++) {
-      $result .= $data[$i];
+      $result .= $data[$i] . ' ';
     }
     return $result;
   }
