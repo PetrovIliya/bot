@@ -23,7 +23,7 @@
       }
       break;
 
-    case 'видео': 
+    case 'видео'; 
     case 'Видео':
       $query = getQuery($requestWords);
       if($query && $lastWord) {
