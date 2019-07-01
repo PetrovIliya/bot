@@ -5,9 +5,9 @@
   require_once('src/TG_func.php');
   
   
-  
   switch ($requestWords[0]): 
-    case '/start': 
+  
+  case '/start': 
       $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                                      'resize_keyboard' => true,
                                                      'one_time_keyboard' => false]); 
@@ -16,11 +16,13 @@
                                  'text' => 'Добро пожаловать ' . $user_first_name . ' ' . $user_last_name . '!',
                                  'reply_markup' => $reply_markup]); 
       break;
+
     case  'команды':
       foreach($comands as $comand) {
         sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => $comand . ' ']);
       }
       break;
+
     case 'видео':
       if($requestWords[1] && $lastWord) {
         if(is_numeric($lastWord) && $requestWords[2] <= MAX_VIDEOS){
@@ -35,6 +37,7 @@
         sendRequest('sendMessage', ['chat_id' => $chat_id, 'text' => 'не верно указаны параметры']);
       }
       break;
+
     default: 
       sendRequest('sendMessage', ['chat_id' => $chat_id,
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью /help']);
