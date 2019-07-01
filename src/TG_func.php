@@ -20,7 +20,7 @@
 
   function getQuery($data) {
     $length = count($data) - 1;
-    for(i=1; i<$length; i++) {
+    for($i=1; $i<$length; $i++) {
       $result .= $data[$i];
     }
     return $result;
