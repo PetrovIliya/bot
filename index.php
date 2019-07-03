@@ -24,10 +24,7 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
-  function replyKeyboardMarkup(array $params)
-    {
-        return json_encode($params);
-    }
+  
 
    $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                          'resize_keyboard' => true,
