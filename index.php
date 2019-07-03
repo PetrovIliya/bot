@@ -9,7 +9,7 @@
                         '"видео" "название видео" "количество" - поиск видео');
   const KEYBOARD = [["команды"],["история"]];
 
-  dataBsaeInit($db);
+  dataBaseInit($db);
   telegramInit($chatId, $request, $userFirstName, $userLastName, $userID);
   youTubeInit($video);
   buildUserRequest($requestWords, $firstWord, $lastWord);
