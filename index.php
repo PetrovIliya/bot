@@ -26,7 +26,7 @@
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
 
-  switch ($requestWords[0]): 
+  switch ($firstWord): 
     case '/start': 
       buildKeeboard(KEYBOARD);
       sendRequest('sendMessage', ['chat_id' => $chatId, 
