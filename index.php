@@ -2,7 +2,7 @@
   require_once('vendor/autoload.php'); 
   require_once('src/api.php');
   require_once ('src/dataBase.php');
-  use Telegram\Bot\Api;
+ 
   const MAX_VIDEOS = 10;
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789';  
   const COMANDS = array('Данный бот находится на стадии разработки, некоторый функционал может быть не доступен',
@@ -14,13 +14,14 @@
   const PASSWORD = 'fb10e00e0584280';
   const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5';
   const KEYBOARD = [["команды"],["история"]];
+
+  telegramInit($chatId, $request, $userFirstName, $userLastName, $userID);
  
   $video = new YouTubeVideo();
   $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
  
  
-  $requestWords = str_word_count($request, 1, EXCEPTIONS);
-  $lastWord = end($requestWords);
+ 
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
 
