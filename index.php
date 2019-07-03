@@ -24,9 +24,7 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
-  $replyMarkup = sendRequest('ReplyKeyboardMarkup', [ 'keyboard' => $keyboard,
-                                                       'resize_keyboard' => true,
-                                                       'one_time_keyboard' => false]);
+
       var_dump($replyMarkup);
 
  
@@ -35,7 +33,7 @@
       
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
-                                 'reply_markup' => $replyMarkup]); 
+                                 'reply_markup' => 'ReplyKeyboardMarkup'); 
       break;
     case 'команды':
       foreach(COMANDS as $comand) {
