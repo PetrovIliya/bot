@@ -2,15 +2,23 @@
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
-
-  $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
+  const API_KEY = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
+  
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
   $chatId = $update['message']['chat']['id'];
   $request = $update['message']['text'];
   $userFirstName = $update['message']['from']['first_name'];
   $userLastName = $update['message']['from']['last_name'];
   $userId = $update['message']['from']['id'];
+  
  
+
+  function buildKeyboard($Keyboard) {
+    $telegram = new Api(API_KEY);
+    $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
+                                                    'resize_keyboard' => true,
+                                                    'one_time_keyboard' => false]); 
+  }
   function sendRequest($method, $params = []): array {
     if(!empty($params)) {
       $url = TELEGRAM_URL . $method . '?' . http_build_query($params);
