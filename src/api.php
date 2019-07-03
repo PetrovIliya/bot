@@ -2,6 +2,13 @@
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
+
+  $video = new YouTubeVideo();
+  
+ function youTubeInit():  {
+   $video = new YouTubeVideo();
+   return $video;
+ }
  
   function sendRequest($method, $params = []): array {
     if(!empty($params)) {
