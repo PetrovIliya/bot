@@ -13,16 +13,24 @@
   }
 
   function sendVideos($data, $quantity, $chatId) {
-            for($i=0; $i < $quantity; $i++) {
-               $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
-               sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => YOUTUBE_URL . $videoIds[$i] ]); 
-            }
+    for($i=0; $i < $quantity; $i++) {
+      $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
+      sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => YOUTUBE_URL . $videoIds[$i] ]); 
+    }
   }
 
   function getQueryForSearch($data): string {
     $length = count($data) - 1;
     for($i=1; $i<$length; $i++) {
       $result .= $data[$i] . ' ';
+    }
+    return $result;
+  }
+
+  function buildUrlsForDb ($data, $quantity): array {
+    for($i=0; $i < $quantity; $i++) {
+     $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
+     $result[$i] = YOUTUBE_URL . $videoIds[$i]; 
     }
     return $result;
   }
