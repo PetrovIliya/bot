@@ -24,14 +24,15 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
+$replyMark = sendRequest('replyKeyboardMarkup', ['keyboard' => $keyboard,
+                                                       'resize_keyboard' => true,
+                                                       'one_time_keyboard' => false]); 
+      var_dump($replyMark);
 
  
   switch ($requestWords[0]): 
     case '/start': 
-      $replyMark = sendRequest('replyKeyboardMarkup', ['keyboard' => $keyboard,
-                                                       'resize_keyboard' => true,
-                                                       'one_time_keyboard' => false]); 
-      var_dump($replyMark);
+      
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMark]); 
