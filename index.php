@@ -29,9 +29,9 @@
         return json_encode($params);
     }
 
-   $replyMarkup = replyKeyboardMarkup(([ 'keyboard' => $keyboard,
-                                          'resize_keyboard' => true,
-                                           'one_time_keyboard' => false]);
+   $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
+                                         'resize_keyboard' => true,
+                                         'one_time_keyboard' => false]);
       var_dump($replyMarkup);
 
  
