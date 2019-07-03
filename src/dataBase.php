@@ -41,7 +41,7 @@ const QUERY_LENGTH = 5;
   }
 
 
-  function sendUserHistory($userData, $chatId) :boolean{
+  function sendUserHistory($userData, $chatId) {
      if($userData) {
      foreach($userData as $fieldName => $fieldValue) {
        if($fieldName !== 'userId' && !empty($fieldValue)) {
@@ -50,7 +50,5 @@ const QUERY_LENGTH = 5;
          break;
        }
      }
-    } else {
-       return false;
-     }
+    }
   }
