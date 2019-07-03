@@ -10,10 +10,9 @@
                         'команды - список команд',
                         '"видео" "название видео" "количество" - поиск видео');
 
-  $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
   $video = youTubeInit();
   $db = dataBaseInit();
-  $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
+  
   $chatId = $update['message']['chat']['id'];
   $request = $update['message']['text'];
   $userFirstName = $update['message']['from']['first_name'];
@@ -24,8 +23,6 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
-  
-      var_dump($replyMarkup);
 
  
   switch ($requestWords[0]): 
