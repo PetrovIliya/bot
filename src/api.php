@@ -5,11 +5,11 @@
 
   $video = new YouTubeVideo();
   
- function youTubeInit():  {
-   $video = new YouTubeVideo();
-   return $video;
- }
- 
+  function youTubeInit()  {
+    $video = new YouTubeVideo();
+    return $video;
+  }
+  
   function sendRequest($method, $params = []): array {
     if(!empty($params)) {
       $url = TELEGRAM_URL . $method . '?' . http_build_query($params);
