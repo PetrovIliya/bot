@@ -28,12 +28,12 @@
  
   switch ($requestWords[0]): 
     case '/start': 
-      $replyMarkup = sendRequest('ReplyKeyboardMarkup',['keyboard' => $keyboard,
+      $replyMark = sendRequest('replyKeyboardMarkup',['keyboard' => $keyboard,
                                                        'resize_keyboard' => true,
                                                        'one_time_keyboard' => false]); 
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
-                                 'reply_markup' => $replyMarkup]); 
+                                 'reply_markup' => $replyMark]); 
       break;
     case 'команды':
       foreach(COMANDS as $comand) {
