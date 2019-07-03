@@ -24,7 +24,9 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
-  $replyMarkup = '"keyboard":[["\u043a\u043e\u043c\u0430\u043d\u0434\u044b"],["\u0438\u0441\u0442\u043e\u0440\u0438\u044f"]],"resize_keyboard":true,"one_time_keyboard":false';
+  $replyMarkup = sendRequest('ReplyKeyboardMarkup', [ 'keyboard' => $keyboard,
+                                                       'resize_keyboard' => true,
+                                                       'one_time_keyboard' => false]);
       var_dump($replyMarkup);
 
  
