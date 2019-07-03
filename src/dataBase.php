@@ -1,6 +1,14 @@
 <?php
-const QUERY_LENGTH = 5;
-
+  const QUERY_LENGTH = 5;
+  const HOST = 'eu-cdbr-west-02.cleardb.net';
+  const USER_NAME = 'b2f8e06330d503';
+  const PASSWORD = 'fb10e00e0584280';
+  const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5'; 
+ 
+  function dataBaseInit($db) {
+    $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
+  }
+    
   function placeForInsert($userData) {
    $isEmpty = false;
    for($i = 1; $i <= QUERY_LENGTH; $i++) {
