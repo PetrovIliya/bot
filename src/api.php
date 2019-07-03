@@ -3,7 +3,12 @@
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
   const API_KEY = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
+  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789';
   use Telegram\Bot\Api; 
+     
+  function youTubeInit($video) {
+    $video = new YouTubeVideo();
+  }
    
   function telegramInit($chatId, $request, $userFirstName, $userLastName, $userID) {
     $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
