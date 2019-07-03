@@ -2,30 +2,15 @@
   require_once('vendor/autoload.php'); 
   require_once('src/api.php');
   require_once ('src/dataBase.php');
- 
   const MAX_VIDEOS = 10;
- 
   const COMANDS = array('Данный бот находится на стадии разработки, некоторый функционал может быть не доступен',
                         'кавычки служат только для обозначения разделов команд, набирать их не стоит', 
                         'команды - список команд',
                         '"видео" "название видео" "количество" - поиск видео');
-  const HOST = 'eu-cdbr-west-02.cleardb.net';
-  const USER_NAME = 'b2f8e06330d503';
-  const PASSWORD = 'fb10e00e0584280';
-  const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5';
   const KEYBOARD = [["команды"],["история"]];
-
   telegramInit($chatId, $request, $userFirstName, $userLastName, $userID);
+  youTubeInit($video);
   buildUserRequest($requestWords, $firstWord, $lastWord);
- 
- 
-  $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
- 
- 
- 
-  $db -> where("userId", $userId);
-  $userData = $db->getOne("userHistory");
-
   switch ($firstWord): 
     case '/start': 
       buildKeeboard(KEYBOARD);
