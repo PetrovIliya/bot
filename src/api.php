@@ -16,7 +16,7 @@
     } else {
       $url = TELEGRAM_URL . $method;
     }
-    return  file_get_contents($url); 
+    return  json_decode(file_get_contents($url)); 
   }
   function sendVideos($data, $quantity, $chatId) {
     for($i=0; $i < $quantity; $i++) {
