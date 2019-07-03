@@ -2,31 +2,37 @@
   require_once('vendor/autoload.php'); 
   require_once('src/api.php');
   require_once ('src/dataBase.php');
+  use Telegram\Bot\Api;
   const MAX_VIDEOS = 10;
+  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789';  
   const COMANDS = array('Данный бот находится на стадии разработки, некоторый функционал может быть не доступен',
                         'кавычки служат только для обозначения разделов команд, набирать их не стоит', 
                         'команды - список команд',
                         '"видео" "название видео" "количество" - поиск видео');
-  const KEYBOARD = [["команды"],["история"]];
-
-
-  dataBaseInit($db);
-  telegramInit($update);
-  youTubeInit($video);
-  buildUserRequest($requestWords, $firstWord, $lastWord);
-  
+  const HOST = 'eu-cdbr-west-02.cleardb.net';
+  const USER_NAME = 'b2f8e06330d503';
+  const PASSWORD = 'fb10e00e0584280';
+  const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5';
+  $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
+  $video = new YouTubeVideo();
+  $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
+  $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
   $chatId = $update['message']['chat']['id'];
   $request = $update['message']['text'];
   $userFirstName = $update['message']['from']['first_name'];
   $userLastName = $update['message']['from']['last_name'];
   $userId = $update['message']['from']['id'];
-
-  //$db -> where("userId", $userId);
-  //$userData = $db->getOne("userHistory");
-  
-  switch ($firstWord): 
+  $keyboard = [["команды"],["история"]];
+  $requestWords = str_word_count($request, 1, EXCEPTIONS);
+  $lastWord = end($requestWords);
+  $db -> where("userId", $userId);
+  $userData = $db->getOne("userHistory");
+ 
+  switch ($requestWords[0]): 
     case '/start': 
-      buildKeeboard(KEYBOARD);
+      $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
+                                                       'resize_keyboard' => true,
+                                                       'one_time_keyboard' => false]); 
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMarkup]); 
@@ -35,7 +41,7 @@
       foreach(COMANDS as $comand) {
         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
       }
-      break;   
+      break;     
     case 'видео':
     case 'Видео':
       $query = getQueryForSearch($requestWords);
@@ -56,9 +62,9 @@
       break;
     case 'история':
     case 'История':
-     $isFound = true;
-     $isFound = sendUserHistory($userData, $chatId);
+      $isFound = true;
+      $isFound = sendUserHistory($userData, $chatId);
     default: 
       sendRequest('sendMessage', ['chat_id' => $chatId,
-                                 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
+                                  'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
   endswitch;
