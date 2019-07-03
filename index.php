@@ -12,7 +12,7 @@
 
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
   $video = new YouTubeVideo();
-  dataBaseInit($db);
+  $db = dataBaseInit();
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
   $chatId = $update['message']['chat']['id'];
   $request = $update['message']['text'];
