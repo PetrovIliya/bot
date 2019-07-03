@@ -24,7 +24,7 @@
     }
     return $result;
   }
-  function buildUrlsForDb ($data, $quantity): array {
+  function buildUrlsForDb ($data, $quantity): string {
     for($i=0; $i < $quantity; $i++) {
      $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
      $result[$i] = YOUTUBE_URL . $videoIds[$i]; 
