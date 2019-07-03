@@ -28,7 +28,7 @@
  
   switch ($requestWords[0]): 
     case '/start': 
-      $replyMark = sendRequest('replyKeyboardMarkup',['keyboard' => $keyboard,
+      $replyMark = sendRequest('ReplyKeyboardMarkup',['keyboard' => $keyboard,
                                                        'resize_keyboard' => true,
                                                        'one_time_keyboard' => false]); 
       sendRequest('sendMessage', ['chat_id' => $chatId, 
