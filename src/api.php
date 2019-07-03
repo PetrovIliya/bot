@@ -2,32 +2,8 @@
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
-  const API_KEY = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
-  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789';
-  use Telegram\Bot\Api; 
-     
-  function youTubeInit($video) {
-    $video = new YouTubeVideo();
-  }
-   
-  function telegramInit($update) {
-    $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
-  }  
-
-  function buildUserRequest($requestWords, $firstWord, $lastWord){
-    $requestWords = str_word_count($request, 1, EXCEPTIONS);
-    $firstWord = $requestWords[0];
-    $lastWord = end($requestWords);
-  }
-
-  function buildKeyboard($Keyboard) {
-    $telegram = new Api(API_KEY);
-    $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
-                                                    'resize_keyboard' => true,
-                                                    'one_time_keyboard' => false]); 
-  }
-  
-  function sendRequest($method, $params = []) {
+ 
+  function sendRequest($method, $params = []): array {
     if(!empty($params)) {
       $url = TELEGRAM_URL . $method . '?' . http_build_query($params);
     } else {
@@ -35,14 +11,12 @@
     }
     return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
   }
-
   function sendVideos($data, $quantity, $chatId) {
     for($i=0; $i < $quantity; $i++) {
       $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
       sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => YOUTUBE_URL . $videoIds[$i] ]); 
     }
   }
-
   function getQueryForSearch($data): string {
     $length = count($data) - 1;
     for($i=1; $i<$length; $i++) {
@@ -50,7 +24,6 @@
     }
     return $result;
   }
-
   function buildUrlsForDb ($data, $quantity): string {
     for($i=0; $i < $quantity; $i++) {
      $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
@@ -58,9 +31,8 @@
     }
     return implode(' ', $result);
   }
-
  class YouTubeVideo
- {
+{
     public $id; 
     private $apiKey = 'AIzaSyAck9hXA-ov9ar1toE9u0MgmCiR-Xazqj8';
     private $youtube;
