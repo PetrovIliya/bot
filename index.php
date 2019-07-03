@@ -40,6 +40,7 @@
         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS){
           $dataBySearch = $video->search($query, $lastWord); 
           sendVideos($dataBySearch, $lastWord, $chatId);
+          $userRequest = buildUrlsForDb(($dataBySearch, $lastWord);
         } elseif(!is_numeric($lastWord)) {
             sendRequest('sendMessage', ['chat_id' => $chatId, 'text' =>  '"количество" - должно быть целым числом']);
         } else {
