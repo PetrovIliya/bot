@@ -14,8 +14,9 @@
     $userId = $update['message']['from']['id'];
   }  
 
-  function buildUserRequest($requestWords, $lastWord){
+  function buildUserRequest($requestWords, $firstWord, $lastWord){
     $requestWords = str_word_count($request, 1, EXCEPTIONS);
+    $firstWord = $requestWords[0];
     $lastWord = end($requestWords);
   }
 
