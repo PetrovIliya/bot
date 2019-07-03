@@ -9,6 +9,10 @@
     $video = new YouTubeVideo();
     return $video;
   }
+
+  function replyKeyboardMarkup(array $params) {
+    return json_encode($params);
+  }
   
   function sendRequest($method, $params = []) {
     if(!empty($params)) {
