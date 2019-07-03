@@ -65,7 +65,8 @@
     case 'История':
      $isFound = true;
      $isFound = sendUserHistory($userData, $chatId);
+     */ 
     default: 
       sendRequest('sendMessage', ['chat_id' => $chatId,
-    */                              'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
+                                 'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
   endswitch;
