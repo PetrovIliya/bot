@@ -27,7 +27,7 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
- 
+ /*
   switch ($requestWords[0]): 
     case '/start': 
       $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
