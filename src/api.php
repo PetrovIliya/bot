@@ -4,7 +4,7 @@
   const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
   const API_KEY = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
    
-  function init($chatId, $request, $userFirstName, $userLastName, $userID) {
+  function telegramInit($chatId, $request, $userFirstName, $userLastName, $userID) {
     $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
     $chatId = $update['message']['chat']['id'];
     $request = $update['message']['text'];
