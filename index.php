@@ -40,7 +40,7 @@
       
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
-                                 'reply_markup' => 'ReplyKeyboardMarkup'); 
+                                 'reply_markup' => $replyMarkup]); 
       break;
     case 'команды':
       foreach(COMANDS as $comand) {
