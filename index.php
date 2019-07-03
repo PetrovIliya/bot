@@ -24,10 +24,10 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
-$replyMark = sendRequest('replyKeyboardMarkup', ['keyboard' => $keyboard,
+  $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                                        'resize_keyboard' => true,
                                                        'one_time_keyboard' => false]); 
-      var_dump($replyMark);
+      var_dump($replyMarkup);
 
  
   switch ($requestWords[0]): 
@@ -35,7 +35,7 @@ $replyMark = sendRequest('replyKeyboardMarkup', ['keyboard' => $keyboard,
       
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
-                                 'reply_markup' => $replyMark]); 
+                                 'reply_markup' => $replyMarkup]); 
       break;
     case 'команды':
       foreach(COMANDS as $comand) {
