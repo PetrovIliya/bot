@@ -16,6 +16,7 @@
   const KEYBOARD = [["команды"],["история"]];
 
   telegramInit($chatId, $request, $userFirstName, $userLastName, $userID);
+  buildUserRequest($requestWords, $firstWord, $lastWord);
  
   $video = new YouTubeVideo();
   $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
