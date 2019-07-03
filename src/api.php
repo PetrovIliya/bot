@@ -10,13 +10,8 @@
     $video = new YouTubeVideo();
   }
    
-  function telegramInit($chatId, $request, $userFirstName, $userLastName, $userID) {
+  function telegramInit($update) {
     $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
-    $chatId = $update['message']['chat']['id'];
-    $request = $update['message']['text'];
-    $userFirstName = $update['message']['from']['first_name'];
-    $userLastName = $update['message']['from']['last_name'];
-    $userId = $update['message']['from']['id'];
   }  
 
   function buildUserRequest($requestWords, $firstWord, $lastWord){
