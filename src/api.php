@@ -32,7 +32,7 @@
                                                     'one_time_keyboard' => false]); 
   }
   
-  function sendRequest($method, $params = []): array {
+  function sendRequest($method, $params = []) {
     if(!empty($params)) {
       $url = TELEGRAM_URL . $method . '?' . http_build_query($params);
     } else {
