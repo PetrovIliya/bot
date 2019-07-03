@@ -13,6 +13,7 @@
   const USER_NAME = 'b2f8e06330d503';
   const PASSWORD = 'fb10e00e0584280';
   const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5';
+  const KEYBOARD = [["команды"],["история"]];
  
   $video = new YouTubeVideo();
   $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
@@ -25,7 +26,7 @@
 
   switch ($requestWords[0]): 
     case '/start': 
-     
+      buildKeeboard(KEYBOARD);
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMarkup]); 
