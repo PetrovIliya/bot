@@ -37,13 +37,11 @@
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMarkup]); 
       break;
- 
     case 'команды':
       foreach(COMANDS as $comand) {
         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
       }
       break;   
-  /*
     case 'видео':
     case 'Видео':
       $query = getQueryForSearch($requestWords);
@@ -62,6 +60,7 @@
         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => 'не верно указаны параметры']);
       }
       break;
+/*
     case 'история':
     case 'История':
      // $isFound = true;
