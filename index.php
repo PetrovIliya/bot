@@ -11,7 +11,7 @@
                         '"видео" "название видео" "количество" - поиск видео');
 
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
-  
+  $video = youTubeInit();
   $db = dataBaseInit();
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
   $chatId = $update['message']['chat']['id'];
@@ -24,10 +24,11 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
+
  
   switch ($requestWords[0]): 
     case '/start': 
-      $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
+      $replyMarkup = sendRequest('ReplyKeyboardMarkup', [ 'keyboard' => $keyboard,
                                                        'resize_keyboard' => true,
                                                        'one_time_keyboard' => false]); 
       sendRequest('sendMessage', ['chat_id' => $chatId, 
