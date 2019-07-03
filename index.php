@@ -9,21 +9,17 @@
                         '"видео" "название видео" "количество" - поиск видео');
   const KEYBOARD = [["команды"],["история"]];
 
-  $db;
-  $chatId;
-  $request;
-  $userFirstName;
-  $userLastName;
-  $userID;
-  $video;
-  $requestWords;
-  $firstWord;
-  $lastWord;
 
   dataBaseInit($db);
-  telegramInit($chatId, $request, $userFirstName, $userLastName, $userID);
+  telegramInit($update);
   youTubeInit($video);
   buildUserRequest($requestWords, $firstWord, $lastWord);
+  
+  $chatId = $update['message']['chat']['id'];
+  $request = $update['message']['text'];
+  $userFirstName = $update['message']['from']['first_name'];
+  $userLastName = $update['message']['from']['last_name'];
+  $userId = $update['message']['from']['id'];
 
   //$db -> where("userId", $userId);
   //$userData = $db->getOne("userHistory");
