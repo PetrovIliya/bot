@@ -27,7 +27,7 @@
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
   $userData = $db->getOne("userHistory");
- /*
+
   switch ($requestWords[0]): 
     case '/start': 
       $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
@@ -37,6 +37,7 @@
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMarkup]); 
       break;
+ /*
     case 'команды':
       foreach(COMANDS as $comand) {
         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
@@ -67,4 +68,5 @@
     default: 
       sendRequest('sendMessage', ['chat_id' => $chatId,
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
+  */
   endswitch;
