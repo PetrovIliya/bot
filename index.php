@@ -4,7 +4,7 @@
   require_once ('src/dataBase.php');
  
   const MAX_VIDEOS = 10;
-  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789';  
+ 
   const COMANDS = array('Данный бот находится на стадии разработки, некоторый функционал может быть не доступен',
                         'кавычки служат только для обозначения разделов команд, набирать их не стоит', 
                         'команды - список команд',
@@ -18,7 +18,7 @@
   telegramInit($chatId, $request, $userFirstName, $userLastName, $userID);
   buildUserRequest($requestWords, $firstWord, $lastWord);
  
-  $video = new YouTubeVideo();
+ 
   $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
  
  
