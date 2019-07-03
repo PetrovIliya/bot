@@ -5,8 +5,9 @@
   const PASSWORD = 'fb10e00e0584280';
   const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5'; 
  
-  function dataBaseInit($db) {
+  function dataBaseInit() {
     $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
+    return $db; 
   }
     
   function placeForInsert($userData) {
