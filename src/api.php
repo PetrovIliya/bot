@@ -10,13 +10,12 @@
     return $video;
   }
   
-  function sendRequest($method, $params = []): array {
+  function sendRequest($method, $params = []) {
     if(!empty($params)) {
       $url = TELEGRAM_URL . $method . '?' . http_build_query($params);
     } else {
       $url = TELEGRAM_URL . $method;
     }
-    return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY);
   }
   function sendVideos($data, $quantity, $chatId) {
     for($i=0; $i < $quantity; $i++) {
