@@ -9,13 +9,10 @@
                         'кавычки служат только для обозначения разделов команд, набирать их не стоит', 
                         'команды - список команд',
                         '"видео" "название видео" "количество" - поиск видео');
-  const HOST = 'eu-cdbr-west-02.cleardb.net';
-  const USER_NAME = 'b2f8e06330d503';
-  const PASSWORD = 'fb10e00e0584280';
-  const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5';
+
   $telegram = new Api('831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0');
   $video = new YouTubeVideo();
-  $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
+  
   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY);
   $chatId = $update['message']['chat']['id'];
   $request = $update['message']['text'];
