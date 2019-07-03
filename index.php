@@ -17,7 +17,7 @@
   $video = new YouTubeVideo();
   $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
  
-  $keyboard = [["команды"],["история"]];
+ 
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
   $db -> where("userId", $userId);
@@ -25,9 +25,7 @@
 
   switch ($requestWords[0]): 
     case '/start': 
-      $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard,
-                                                       'resize_keyboard' => true,
-                                                       'one_time_keyboard' => false]); 
+     
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMarkup]); 
