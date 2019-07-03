@@ -32,7 +32,7 @@
      $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
      $result[$i] = YOUTUBE_URL . $videoIds[$i]; 
     }
-    return $result;
+    return implode(' ', $result);
   }
 
  class YouTubeVideo
