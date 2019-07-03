@@ -43,14 +43,14 @@ const QUERY_LENGTH = 5;
 
   function sendUserHistory($userData, $chatId): boolean {
      if($userData) {
-     foreach($userData as $fieldName => $fieldValue) {
-       if($fieldName !== 'userId' && !empty($fieldValue)) {
-         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $fieldValue]);
-       } elseif(empty($fieldValue)) {
-         break;
-       }
+       foreach($userData as $fieldName => $fieldValue) {
+         if($fieldName !== 'userId' && !empty($fieldValue)) {
+           sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $fieldValue]);
+         } elseif(empty($fieldValue)) {
+           break;
+         }
+       } 
      } else {
        return false;
-     }
-    }
-  }
+     } 
+  } 
