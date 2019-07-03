@@ -25,8 +25,8 @@
   youTubeInit($video);
   buildUserRequest($requestWords, $firstWord, $lastWord);
 
-  $db -> where("userId", $userId);
-  $userData = $db->getOne("userHistory");
+  //$db -> where("userId", $userId);
+  //$userData = $db->getOne("userHistory");
   
   switch ($firstWord): 
     case '/start': 
