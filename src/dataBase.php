@@ -16,7 +16,8 @@
       $tempData = str_word_count($query['userQuery'], 1, EXCEPTIONS);
       $data = array_merge($data, $tempData);
     }
-    return $data;
+    
+    return array_reverse($data);
   }
  
   function showUserHistory($data, $userId, $chatId) {
