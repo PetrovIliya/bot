@@ -58,7 +58,7 @@
     case 'история':
     case 'История':
       $dataBaseData = convertDataToArray($db, $userId, $lastWord);
-      
+      showUserHistory($dataBaseData, $userId, $chatId);
     default: 
       sendRequest('sendMessage', ['chat_id' => $chatId,
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
