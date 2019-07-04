@@ -69,6 +69,7 @@
           showUserHistory($dataBaseData, $userId, $chatId);
         } else {
           sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - должно быть целым числом']);
+        }  
       }
       break;
     default: 
