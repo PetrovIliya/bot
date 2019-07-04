@@ -10,11 +10,7 @@
   }
     
   function convertDataToArray($db, $userId, $quantinty) {
-    if ($quantinty != 'история') {
-      $userQueries = $db->rawQuery('SELECT DISTINCT(userQuery) FROM history WHERE userId = ' .$userId . ' ORDER BY id DESC LIMIT ' . $quantinty);
-    } else {
-       $userQueries = $db->rawQuery('SELECT DISTINCT(userQuery) FROM history WHERE userId = ' .$userId . ' ORDER BY id DESC LIMIT 5');
-    } 
+    $userQueries = $db->rawQuery('SELECT DISTINCT(userQuery) FROM history WHERE userId = ' .$userId . ' ORDER BY id DESC LIMIT ' . $quantinty);
     $data = [];
     foreach ($userQueries as $query) {
       $tempData = str_word_count($query['userQuery'], 1, EXCEPTIONS);
