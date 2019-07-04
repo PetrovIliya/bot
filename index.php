@@ -12,7 +12,7 @@
 
   $video = youTubeInit();
   $db = dataBaseInit();
-
+  $update = telegramInit();
   $chatId = $update['message']['chat']['id'];
   $userId = $update['message']['from']['id'];
   $userFirstName = $update['message']['from']['first_name'];
