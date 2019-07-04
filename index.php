@@ -3,6 +3,7 @@
   require_once('src/api.php');
   require_once ('src/dataBase.php');
   use Telegram\Bot\Api;
+  const DEFAULT_QUANTINTY = 5;
   const MAX_VIDEOS = 10;
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789./?=-_:';  
   const COMANDS = array('кавычки служат только для обозначения разделов команд, набирать их не стоит', 
@@ -59,8 +60,17 @@
       break;
     case 'история':
     case 'История':
-      $dataBaseData = convertDataToArray($db, $userId, $lastWord);
-      showUserHistory($dataBaseData, $userId, $chatId);
+      if($lastWord !== 'история' || $lastWord !== 'История') {
+        if(is_numeric($lastWord)) {
+          $dataBaseData = convertDataToArray($db, $userId, $lastWord);
+          showUserHistory($dataBaseData, $userId, $chatId);
+        } else {
+          sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - должно быть целым числом');
+        }
+      } else {
+        $dataBaseData = convertDataToArray($db, $userId, DEFAULT_QUANTINTY);
+        showUserHistory($dataBaseData, $userId, $chatId);
+      }
       break;
     default: 
       sendRequest('sendMessage', ['chat_id' => $chatId,
