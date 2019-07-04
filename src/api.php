@@ -7,11 +7,7 @@
 
   function telegramInit($chatId, $userId, $userFirstName, $userLastName, $request) {
     
-     $chatId = UPDATE['message']['chat']['id'];
-     $userId = UPDATE['message']['from']['id'];
-     $userFirstName = UPDATE['message']['from']['first_name'];
-     $userLastName = UPDATE['message']['from']['last_name'];
-     $request = UPDATE['message']['text'];
+    
   }
   
   function youTubeInit()  {
