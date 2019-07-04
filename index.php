@@ -12,6 +12,12 @@
 
   $video = youTubeInit();
   $db = dataBaseInit();
+
+  $chatId = $update['message']['chat']['id'];
+  $userId = $update['message']['from']['id'];
+  $userFirstName = $update['message']['from']['first_name'];
+  $userLastName = $update['message']['from']['last_name'];
+  $request = $update['message']['text'];
   telegramInit($chatId, $userId, $userFirstName, $userLastName, $request); 
   $keyboard = [["команды"],["история"]];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
