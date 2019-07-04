@@ -60,7 +60,7 @@
       break;
     case 'история':
     case 'История':
-      if($lastWord !== 'история' || $lastWord !== 'История') {
+      if($lastWord != 'история' || $lastWord != 'История') {
         if(is_numeric($lastWord)) {
           $dataBaseData = convertDataToArray($db, $userId, $lastWord);
           showUserHistory($dataBaseData, $userId, $chatId);
