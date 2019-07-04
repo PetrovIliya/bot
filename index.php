@@ -24,7 +24,7 @@
   $keyboard = [["команды"],["история"]];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
-  sendRequest('sendMessage', ['chat_id' => 843008832, 'text' => 'TEST'); 
+  sendRequest('sendMessage', ['chat_id' => 843008832, 'text' => 'TEST']); 
   switch ($requestWords[0]): 
     case '/start': 
       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
