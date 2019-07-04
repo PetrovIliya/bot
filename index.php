@@ -22,9 +22,6 @@
   $keyboard = [["команды"],["история"]];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
-  $db -> where("userId", $userId);
-  $userData = $db->getOne("userHistory");
-
  
   switch ($requestWords[0]): 
     case '/start': 
@@ -48,7 +45,7 @@
           $dataBySearch = $video->search($query, $lastWord); 
           sendVideos($dataBySearch, $lastWord, $chatId);
           $serchResult = buildUrlsForDb($dataBySearch, $lastWord);
-          insertUserHistory($db, $userData, $serchResult, $userId);
+          insertToDataBase($db, $userId, $serchResult);
         } elseif(!is_numeric($lastWord)) {
             sendRequest('sendMessage', ['chat_id' => $chatId, 'text' =>  '"количество" - должно быть целым числом']);
         } else {
@@ -60,8 +57,8 @@
       break;
     case 'история':
     case 'История':
-      $isFound = true;
-      $isFound = sendUserHistory($userData, $chatId);
+      $dataBaseData = convertDataToArray($db, $userId, $lastWord);
+      
     default: 
       sendRequest('sendMessage', ['chat_id' => $chatId,
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
