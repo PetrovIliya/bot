@@ -13,11 +13,7 @@
   $video = youTubeInit();
   $db = dataBaseInit();
   
-  $chatId = $update['message']['chat']['id'];
-  $request = $update['message']['text'];
-  $userFirstName = $update['message']['from']['first_name'];
-  $userLastName = $update['message']['from']['last_name'];
-  $userId = $update['message']['from']['id'];
+ 
   $keyboard = [["команды"],["история"]];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
