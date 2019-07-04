@@ -13,7 +13,7 @@
     if ($quantinty != 'история') {
       $userQueries = $db->rawQuery('SELECT DISTINCT(userQuery) FROM history WHERE userId = ' .$userId . ' ORDER BY id DESC LIMIT ' . $quantinty);
     } else {
-       $userQueries = $db->rawQuery('SELECT DISTINCT(userQuery) FROM history WHERE userId = ' .$userId . ' ORDER BY id DESC LIMIT 1');
+       $userQueries = $db->rawQuery('SELECT DISTINCT(userQuery) FROM history WHERE userId = ' .$userId . ' ORDER BY id DESC LIMIT 5');
     } 
     $data = [];
     foreach ($userQueries as $query) {
