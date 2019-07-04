@@ -1,5 +1,4 @@
 <?php
-  const QUERY_LENGTH = 5;
   const HOST = 'eu-cdbr-west-02.cleardb.net';
   const USER_NAME = 'b2f8e06330d503';
   const PASSWORD = 'fb10e00e0584280';
@@ -10,56 +9,25 @@
     return $db; 
   }
     
-  function placeForInsert($userData) {
-   $isEmpty = false;
-   for($i = 1; $i <= QUERY_LENGTH; $i++) {
-     if(empty($userData['userQuery' . $i])) {
-       $isEmpty = true;
-       break;
-   }
-     }
-     if ($isEmpty) {
-       return $i;
-     } else {
-       return ++$i;
-     }
+  function convertDataToArray($db, $userId, $quantinty) {
+    $userQueries = $db->rawQuery('SELECT DISTINCT(userQuery) FROM history WHERE userId = ' .$userId . ' ORDER BY id DESC LIMIT ' . $quantinty);
+    $data = [];
+    foreach ($userQueries as $query) {
+      $tempData = str_word_count($query['userQuery'], 1, EXCEPTIONS);
+      $data = array_merge($data, $tempData);
+    }
+    return $data;
   }
-
-  function insertUserHistory ($db, $userData, $serchResult, $userId) {
-    if($userData) {
-      $insertPlace = placeForInsert($userData);
-      if($insertPlace <= QUERY_LENGTH) {
-        $userQuery = 'userQuery' . $insertPlace;
-        $data = [$userQuery => $serchResult];
-        $db->where('userId', $userId);
-        $db->update('userHistory', $data);
-      } else {
-        $data=['userQuery1' => $userData['userQuery2'],
-               'userQuery2' => $userData['userQuery3'],
-               'userQuery3' => $userData['userQuery4'],
-               'userQuery4' => $userData['userQuery5'],
-               'userQuery5' => $serchResult      ];
-        $db->where('userId', $userId);
-        $db->update('userHistory', $data);
-      }
-    } else {
-      $data=['userId' => $userId,
-          'userQuery1' => $serchResult];
-      $db->insert('userHistory', $data);
+ 
+  function showUserHistory($data, $userId, $chatId) {
+    foreach($data as $item) {
+      sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $item]);
     }
   }
 
 
-  function sendUserHistory($userData, $chatId) {
-     if($userData) {
-       foreach($userData as $fieldName => $fieldValue) {
-         if($fieldName !== 'userId' && !empty($fieldValue)) {
-           sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $fieldValue]);
-         } elseif(empty($fieldValue)) {
-           break;
-         }
-       } 
-     } else {
-       return false;
-     } 
-  } 
+  function insertToDataBase($db, $userId, $serchResult) {
+    $data = [ 'userId' => $userId,
+              'userQuery' => $serchResult];
+    $db->insert('history', $data);
+  }
