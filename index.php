@@ -5,10 +5,11 @@
   use Telegram\Bot\Api;
   const MAX_VIDEOS = 10;
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789./?=-_';  
-  const COMANDS = array('Данный бот находится на стадии разработки, некоторый функционал может быть не доступен',
-                        'кавычки служат только для обозначения разделов команд, набирать их не стоит', 
+  const COMANDS = array('кавычки служат только для обозначения разделов команд, набирать их не стоит', 
                         'команды - список команд',
-                        '"видео" "название видео" "количество" - поиск видео');
+                        '"видео" "название видео" "количество" - поиск видео',
+                        'история - история пяти последних запросов',
+                        '"история" "количество" - история запросов в количестве "количество"');
 
   $video = youTubeInit();
   $db = dataBaseInit();
@@ -32,6 +33,7 @@
                                  'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMarkup]); 
       break;
+    case 'Команды':
     case 'команды':
       foreach(COMANDS as $comand) {
         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
@@ -59,6 +61,7 @@
     case 'История':
       $dataBaseData = convertDataToArray($db, $userId, $lastWord);
       showUserHistory($dataBaseData, $userId, $chatId);
+      break;
     default: 
       sendRequest('sendMessage', ['chat_id' => $chatId,
                                   'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
