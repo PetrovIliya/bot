@@ -37,7 +37,7 @@
     case 'Команды':
     case 'команды':
       foreach(COMANDS as $comand) {
-        sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ']);
+        sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand . ' ' . $chatId]);
       }
       break;     
     case 'видео':
