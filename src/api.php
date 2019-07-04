@@ -1,16 +1,17 @@
 <?php
+   $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY); 
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
-  
+  const UPDATE = $update;
 
   function telegramInit($chatId, $userId, $userFirstName, $userLastName, $request) {
-     $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY); 
-     $chatId = $update['message']['chat']['id'];
-     $userId = $update['message']['from']['id'];
-     $userFirstName = $update['message']['from']['first_name'];
-     $userLastName = $update['message']['from']['last_name'];
-     $request = $update['message']['text'];
+    
+     $chatId = UPDATE['message']['chat']['id'];
+     $userId = UPDATE['message']['from']['id'];
+     $userFirstName = UPDATE['message']['from']['first_name'];
+     $userLastName = UPDATE['message']['from']['last_name'];
+     $request = UPDATE['message']['text'];
   }
   
   function youTubeInit()  {
