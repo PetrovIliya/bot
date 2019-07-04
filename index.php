@@ -65,7 +65,7 @@
           $dataBaseData = convertDataToArray($db, $userId, $lastWord);
           showUserHistory($dataBaseData, $userId, $chatId);
         } else {
-          sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - должно быть целым числом');
+          sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - должно быть целым числом']);
         }
       } else {
         $dataBaseData = convertDataToArray($db, $userId, DEFAULT_QUANTINTY);
