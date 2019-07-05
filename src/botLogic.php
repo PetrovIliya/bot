@@ -47,6 +47,7 @@
   {
       $lastWord = end($requestWords);
       $query = $video -> buildVideoName($requestWords);
+      sendMessage($query . ' ' . $lastWord, $chatId);
       if($query && $lastWord) 
       {
          sendVideoHandler($video, $db, $query, $lastWord, $chatId, $userId);
