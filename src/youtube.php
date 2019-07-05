@@ -18,12 +18,24 @@
           $client->setDeveloperKey($this->apiKey);
           $this->youtube = new Google_Service_YouTube($client);
       }
+   
       public function videosByIds( string $ids)
       {
           return $this->youtube->videos->listVideos('snippet, statistics, contentDetails', [
             'id' => $ids,
           ]);
       }
+   
+    public function buildUrlsForDb ($data, $quantity): string
+    {
+        for($i=0; $i < $quantity; $i++)
+        {
+            $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
+            $result[$i] = YOUTUBE_URL . $videoIds[$i] . ' '; 
+        }
+        return implode(' ', $result);
+    }
+
     
    
     public function search(string $q, int $maxResults=12, string $lang='ru' )
