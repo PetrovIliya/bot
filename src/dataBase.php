@@ -26,15 +26,6 @@
       return array_reverse($data);
   }
  
-  function showUserHistory($data, $userId, $chatId)
-  {
-      foreach($data as $item)
-      {
-          sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $item]);
-      }
-  }
-
-
   function insertToDataBase($db, $userId, $serchResult)
   {
       $data = [ 'userId' => $userId,
