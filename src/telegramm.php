@@ -43,12 +43,3 @@
           sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $item]);
       }
   }
-
-  function buildVideoName($data): string 
-  {
-      $length = count($data) - 1;
-      for($i=1; $i<$length; $i++) {
-          $result .= $data[$i] . ' ';
-      }
-      return $result;
-  }
