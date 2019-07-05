@@ -4,7 +4,7 @@
   const PASSWORD = 'fb10e00e0584280';
   const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5'; 
  
-  function dataBaseInit()
+  function dataBaseInit(): object
   {
       $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
       return $db; 
@@ -17,7 +17,7 @@
                                     WHERE userId = ' . $userId . 
                                    ' ORDER BY id DESC LIMIT ' . $quantinty);
       $data = [];
-      foreach ($userQueries as $query)
+      foreach ($userQueries as $query): array
       {
           $tempData = str_word_count($query['userQuery'], 1, EXCEPTIONS);
           $data = array_merge($data, $tempData);
