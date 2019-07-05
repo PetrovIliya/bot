@@ -25,6 +25,14 @@
   {
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                   'text' => $text]);
+  } 
+
+  function sendCommands($chatId)
+  {
+       foreach(COMMANDS as $comand)
+       {
+         sendMessage($comand, $chatId);
+       }
   }  
 
   function startBot($update, $db, $video)
@@ -45,10 +53,7 @@
               sendMessage($greatings, $chatId); 
               break;
           case ALL_COMMANDS_COMMAND:
-              foreach(COMMANDS as $comand)
-              {
-                   sendMessage($comand, $chatId);
-              }
+              sendCommands($chatId);
               break;     
           case VIDEO_COMMAND:
               $query = getQueryForSearch($requestWords);
