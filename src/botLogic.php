@@ -47,7 +47,7 @@
       return true;
   }
 
- function videoLogicHandler($video, $db, $chatId, $userId)
+ function videoLogicHandler($video, $db, $chatId, $userId, $requestWords)
  {
      $query = $video -> buildVideoName($requestWords);
      if($query && $lastWord) 
@@ -97,7 +97,7 @@
               sendCommands($chatId);
               break;     
           case VIDEO_COMMAND:
-              videoLogicHandler($video, $db, $chatId, $userId);
+              videoLogicHandler($video, $db, $chatId, $userId, $requestWords);
               break;
           case HISTORY_COMMAND:
               if($lastWord == 'история' || $lastWord == 'История') 
