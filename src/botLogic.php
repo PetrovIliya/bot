@@ -85,7 +85,7 @@
       $lastWord = mb_strtolower($lastWord);
       if($lastWord == HISTORY_COMMAND) 
       {
-          showUserHistory($dataBaseData, $userId, $chatId, DEFAULT_HISTORY_QUANTINTY);
+          showUserHistory($db, $userId, $chatId, DEFAULT_HISTORY_QUANTINTY);
       }
       else
       {
