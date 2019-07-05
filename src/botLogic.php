@@ -39,13 +39,40 @@
   {
       foreach($dataForCheck as $data)
       {
-          if(!$data)
+          if(!isset($data))
           {
             return false;
           }    
       }
       return true;
   }
+
+ function videoLogicHandler($video, $db, $chatId, $userId)
+ {
+     $query = $video -> buildVideoName($requestWords);
+     if($query && $lastWord) 
+     {
+         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS)
+         {
+             $dataBySearch = $video -> search($query, $lastWord); 
+             sendVideos($dataBySearch, $lastWord, $chatId);
+             $serchResult = $video -> buildUrlsForDb($dataBySearch, $lastWord);
+             insertToDataBase($db, $userId, $serchResult);
+         } 
+         elseif(!is_numeric($lastWord))
+         {
+             sendRequest('sendMessage', ['chat_id' => $chatId, 'text' =>  '"количество" - должно быть целым числом']);
+         } 
+         else
+         {
+             sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - не может превышать ' . MAX_VIDEOS]);
+         }     
+     } 
+     else 
+     {
+         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => 'не верно указаны параметры']);
+     }
+ }
 
   function startBot($update, $db, $video)
   {
@@ -56,7 +83,7 @@
       $lastName = $update['message']['from']['last_name'];
       $request = $update['message']['text'];
       $dataForCheck = [$chatId, $userId, $firstName, $lastName, $request];
-     // $isCorrect = checkData($dataForCheck);
+      $isCorrect = checkData($dataForCheck);
       $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
       $requestWords = str_word_count($request, 1, EXCEPTIONS);
       $lastWord = end ($requestWords);
@@ -70,29 +97,7 @@
               sendCommands($chatId);
               break;     
           case VIDEO_COMMAND:
-              $query = $video -> buildVideoName($requestWords);
-              if($query && $lastWord) 
-              {
-                  if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS)
-                  {
-                      $dataBySearch = $video -> search($query, $lastWord); 
-                      sendVideos($dataBySearch, $lastWord, $chatId);
-                      $serchResult = $video -> buildUrlsForDb($dataBySearch, $lastWord);
-                      insertToDataBase($db, $userId, $serchResult);
-                  } 
-                  elseif(!is_numeric($lastWord))
-                  {
-                      sendRequest('sendMessage', ['chat_id' => $chatId, 'text' =>  '"количество" - должно быть целым числом']);
-                  } 
-                  else
-                  {
-                      sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - не может превышать ' . MAX_VIDEOS]);
-                  }     
-              } 
-              else 
-              {
-                  sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => 'не верно указаны параметры']);
-              }
+              videoLogicHandler($video, $db, $chatId, $userId);
               break;
           case HISTORY_COMMAND:
               if($lastWord == 'история' || $lastWord == 'История') 
