@@ -6,11 +6,11 @@
   const DEFAULT_QUANTINTY = 5;
   const MAX_VIDEOS = 10;
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789./?=-_:';  
-  const COMANDS = array('кавычки служат только для обозначения разделов команд, набирать их не стоит', 
-                        'команды - список команд',
-                        '"видео" "название видео" "количество" - поиск видео',
-                        'история - история пяти последних запросов',
-                        '"история" "количество" - история запросов в количестве "количество"');
+  const COMANDS = ['кавычки служат только для обозначения разделов команд, набирать их не стоит', 
+                   'команды - список команд',
+                   '"видео" "название видео" "количество" - поиск видео',
+                   'история - история пяти последних запросов',
+                   '"история" "количество" - история запросов в количестве "количество"'];
 
   $video = youTubeInit();
   $db = dataBaseInit();
@@ -20,11 +20,11 @@
   $userFirstName = $update['message']['from']['first_name'];
   $userLastName = $update['message']['from']['last_name'];
   $request = $update['message']['text'];
-  telegramInit($chatId, $userId, $userFirstName, $userLastName, $request); 
   $keyboard = [["команды"],["история"]];
   $requestWords = str_word_count($request, 1, EXCEPTIONS);
   $lastWord = end($requestWords);
-  switch ($requestWords[0]): 
+  $firstWord = $requestWords[0];
+  switch ($firstWord): 
     case '/start': 
       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                            'resize_keyboard' => true,
