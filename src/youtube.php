@@ -1,6 +1,7 @@
 <?php
+  const YOUTUBE_URL = 'https://www.youtube.com/watch?v=';
 
- function youTubeInit() 
+  function youTubeInit() 
   {
       $video = new YouTubeVideo();
       return $video;
