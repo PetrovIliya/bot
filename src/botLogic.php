@@ -84,15 +84,19 @@
       $firstWord = mb_strtolower($requestWords[0]);
       switch ($firstWord): 
           case START_COMMAND: 
+              showKeyboard($chatId);
               sendMessage($greatings, $chatId); 
               break;
           case ALL_COMMANDS_COMMAND:
+              showKeyboard($chatId);
               sendCommands($chatId);
               break;     
           case VIDEO_COMMAND:
+              showKeyboard($chatId);
               videoLogicHandler($video, $db, $chatId, $userId, $requestWords);
               break;
           case HISTORY_COMMAND:
+              showKeyboard($chatId);
               historyLogicHandler($db, $userId, $chatId, $lastWord);
               break;
           default: 
