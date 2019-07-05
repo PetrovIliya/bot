@@ -50,11 +50,11 @@
   function startBot($update, $db, $video)
   {
       $keyboard = [["команды"],["история"]];
-      $chatId = isset($update['message']['chat']['id']);
-      $userId = isset ($update['message']['from']['id']);
-      $firstName = isset($update['message']['from']['first_name']);
-      $lastName = isset($update['message']['from']['last_name']);
-      $request = isset($update['message']['text']);
+      $chatId = $update['message']['chat']['id'];
+      $userId = $update['message']['from']['id'];
+      $firstName = $update['message']['from']['first_name'];
+      $lastName = $update['message']['from']['last_name'];
+      $request = $update['message']['text'];
       $dataForCheck = [$chatId, $userId, $firstName, $lastName, $request];
      // $isCorrect = checkData($dataForCheck);
       $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
