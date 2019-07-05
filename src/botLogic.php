@@ -31,8 +31,8 @@
   {
       $chatId = $update['message']['chat']['id'];
       $userId = $update['message']['from']['id'];
-      $userFirstName = $update['message']['from']['first_name'];
-      $userLastName = $update['message']['from']['last_name'];
+      $greatings = 'Добро пожаловать ' . $update['message']['from']['first_name'] . ' ' . 
+                                         $update['message']['from']['last_name'] . '!';
       $request = $update['message']['text'];
       $keyboard = [["команды"],["история"]];
       $requestWords = str_word_count($request, 1, EXCEPTIONS);
@@ -42,16 +42,18 @@
       switch ($firstWord): 
           case START_COMMAND: 
               showKeyboard($chatId);
-              sendMessage('Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!', $chatId); 
+              sendMessage($greatings, $chatId); 
               break;
           case ALL_COMMANDS_COMMAND:
-              foreach(COMMANDS as $comand) {
-                  sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $comand]);
+              foreach(COMMANDS as $comand)
+              {
+                   sendMessage($comand, $chatId);
               }
               break;     
           case VIDEO_COMMAND:
               $query = getQueryForSearch($requestWords);
-              if($query && $lastWord) {
+              if($query && $lastWord) 
+              {
                   if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS)
                   {
                       $dataBySearch = $video->search($query, $lastWord); 
