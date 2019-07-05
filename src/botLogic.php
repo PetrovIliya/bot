@@ -35,18 +35,32 @@
        }
   }  
 
+  function checkData($dataForCheck): bool
+  {
+      foreach($dataForCheck as $data)
+      {
+          if(!$data)
+          {
+            return false;
+          }    
+      }
+      return true;
+  }
+
   function startBot($update, $db, $video)
   {
-      $chatId = $update['message']['chat']['id'];
-      $userId = $update['message']['from']['id'];
-      $greatings = 'Добро пожаловать ' . $update['message']['from']['first_name'] . ' ' . 
-                                         $update['message']['from']['last_name'] . '!';
-      $request = $update['message']['text'];
       $keyboard = [["команды"],["история"]];
+      $chatId = isset($update['message']['chat']['id']);
+      $userId = isset ($update['message']['from']['id']);
+      $firstName = isset($update['message']['from']['first_name']);
+      $lastName = isset($update['message']['from']['last_name']);
+      $request = isset($update['message']['text']);
+      $dataForCheck = [$chatId, $userId, $firstName, $lastName, $request];
+      $isCorrect = checkData($dataForCheck);
+      $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
       $requestWords = str_word_count($request, 1, EXCEPTIONS);
-      $lastWord = end($requestWords);
+      $lastWord = end ($requestWords);
       $firstWord = mb_strtolower($requestWords[0]);
-      
       switch ($firstWord): 
           case START_COMMAND: 
               showKeyboard($chatId);
