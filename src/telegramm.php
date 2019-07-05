@@ -36,6 +36,14 @@
       }
   }
 
+  function showUserHistory($data, $userId, $chatId)
+  {
+      foreach($data as $item)
+      {
+          sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $item]);
+      }
+  }
+
   function getQueryForSearch($data): string 
   {
       $length = count($data) - 1;
