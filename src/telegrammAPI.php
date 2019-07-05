@@ -2,7 +2,7 @@
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
 
-  function telegramInit()
+  function telegramInit(): array
   {
       $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY); 
       return $update;
