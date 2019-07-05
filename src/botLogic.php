@@ -8,7 +8,7 @@
                    'история - история пяти последних запросов',
                    '"история" "количество" - история запросов в количестве "количество"'];
 
-  
+  function startBot($update, $db, $video) {
   $chatId = $update['message']['chat']['id'];
   $userId = $update['message']['from']['id'];
   $userFirstName = $update['message']['from']['first_name'];
@@ -67,5 +67,7 @@
       break;
     default: 
       sendRequest('sendMessage', ['chat_id' => $chatId,
-                                  'text' => 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"']);
+                                  'text' => 'Запрос не является командой,
+                                   со списком доступных команд можно ознакомится с помощью запроса "команды"']);
   endswitch;
+  }
