@@ -37,7 +37,7 @@
           return implode(' ', $result);
       }
        
-      public function buildVideoName($data): string 
+      public function buildVideoName($data): ?string 
       {
           $length = count($data) - 1;
           for($i=1; $i<$length; $i++) 
