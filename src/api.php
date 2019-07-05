@@ -93,11 +93,12 @@
     public function getPopularVideosByCategory( string $videoCategoryId, int $maxResults=10, string $region='RU', $pageToken=null)
     {
         try {
-            $response = $this->youtube->videos->listVideos('snippet, statistics, contentDetails', ['videoCategoryId' => $videoCategoryId,
-                                                                                                   'maxResults' => $maxResults,
-                                                                                                   'regionCode' => $region,
-                                                                                                   'chart' => 'mostPopular',
-                                                                                                   'pageToken' => $pageToken]);
+            $response = $this->youtube->videos->listVideos('snippet, statistics, contentDetails',
+                                                          ['videoCategoryId' => $videoCategoryId,
+                                                           'maxResults' => $maxResults,
+                                                           'regionCode' => $region,
+                                                           'chart' => 'mostPopular',
+                                                           'pageToken' => $pageToken]);
         } catch (\Google_Service_Exception $e){
             return false;
         }
