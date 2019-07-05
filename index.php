@@ -8,6 +8,4 @@
   $video = youTubeInit();
   $db = dataBaseInit();
   $update = telegramInit();
-  $chatId = $update['message']['chat']['id'];
-  sendMessage('HELLO', $chatId);
   startBot($update, $db, $video);
