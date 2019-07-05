@@ -82,16 +82,15 @@
 
   function historyLogicHandler($db, $userId, $chatId, $lastWord)
   {
-      if($lastWord == 'история' || $lastWord == 'История') 
+      $lastWord = mb_strtolower($lastWord);
+      if($lastWord == HISTORY_COMMAND) 
       {
-          $dataBaseData = convertDataToArray($db, $userId, DEFAULT_HISTORY_QUANTINTY);
-          showUserHistory($dataBaseData, $userId, $chatId);
+          showUserHistory($dataBaseData, $userId, $chatId, DEFAULT_HISTORY_QUANTINTY);
       }
       else
       {
           if(is_numeric($lastWord))
           {
-             
               showUserHistory($db, $userId, $chatId, $lastWord);
           }
           else
