@@ -42,7 +42,7 @@
       switch ($firstWord): 
           case START_COMMAND: 
               showKeyboard($chatId);
-              sendMesssage('Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!', $chatId); 
+              sendMessage('Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!', $chatId); 
               break;
           case ALL_COMMANDS_COMMAND:
               foreach(COMMANDS as $comand) {
