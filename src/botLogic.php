@@ -58,7 +58,7 @@
                   {
                       $dataBySearch = $video->search($query, $lastWord); 
                       sendVideos($dataBySearch, $lastWord, $chatId);
-                      $serchResult = buildUrlsForDb($dataBySearch, $lastWord);
+                      $serchResult = $video->buildUrlsForDb($dataBySearch, $lastWord);
                       insertToDataBase($db, $userId, $serchResult);
                   } 
                   elseif(!is_numeric($lastWord))
