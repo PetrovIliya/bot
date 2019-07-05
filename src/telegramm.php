@@ -7,12 +7,7 @@
       $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY); 
       return $update;
   }
-  
-  function replyKeyboardMarkup(array $params) 
-  {
-      return json_encode($params);
-  }
-  
+
   function sendRequest($method, $params = [])
   {
       if(!empty($params))
@@ -25,7 +20,35 @@
       }
       return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY); 
   }
+  
+  function replyKeyboardMarkup(array $params) 
+  {
+      return json_encode($params);
+  }
 
+  function sendMessage($text, $chatId)
+  {
+      sendRequest('sendMessage', ['chat_id' => $chatId, 
+                                  'text' => $text]);
+  }
+
+  function showKeyboard($chatId)
+  {
+       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
+                                            'resize_keyboard' => true,
+                                            'one_time_keyboard' => false]);
+       sendRequest('sendMessage', ['chat_id' => $chatId, 
+                                  'reply_markup' => $replyMarkup]); 
+  }  
+
+  function sendCommands($chatId)
+  {
+       foreach(COMMANDS as $comand)
+       {
+         sendMessage($comand, $chatId);
+       }
+  } 
+  
   function sendVideos($data, $quantity, $chatId)
   {
       for($i=0; $i < $quantity; $i++)
