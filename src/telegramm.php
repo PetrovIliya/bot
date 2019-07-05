@@ -8,7 +8,7 @@
       return $update;
   }
 
-  function sendRequest($method, $params = [])
+  function sendRequest($method, $params = []): array
   {
       if(!empty($params))
       {
@@ -54,7 +54,8 @@
       for($i=0; $i < $quantity; $i++)
       {
           $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
-          sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => YOUTUBE_URL . $videoIds[$i] ]); 
+          $message = YOUTUBE_URL . $videoIds[$i];
+          sendMessage($message, $chatId); 
       }
   }
 
@@ -63,6 +64,6 @@
       $data = convertDataToArray($db, $userId, $quantinty);
       foreach($data as $item)
       {
-          sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $item]);
+          sendMessage($item, $chatId);
       }
   }
