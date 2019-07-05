@@ -1,5 +1,5 @@
 <?php
-const DEFAULT_QUANTINTY = 5;
+  const DEFAULT_QUANTINTY = 5;
   const MAX_VIDEOS = 10;
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ/0123456789./?=-_:';  
   const COMMANDS = ['кавычки служат только для обозначения разделов команд, набирать их не стоит', 
@@ -8,9 +8,7 @@ const DEFAULT_QUANTINTY = 5;
                    'история - история пяти последних запросов',
                    '"история" "количество" - история запросов в количестве "количество"'];
 
-  $video = youTubeInit();
-  $db = dataBaseInit();
-  $update = telegramInit();
+  
   $chatId = $update['message']['chat']['id'];
   $userId = $update['message']['from']['id'];
   $userFirstName = $update['message']['from']['first_name'];
