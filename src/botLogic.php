@@ -56,7 +56,7 @@
       $lastName = isset($update['message']['from']['last_name']);
       $request = isset($update['message']['text']);
       $dataForCheck = [$chatId, $userId, $firstName, $lastName, $request];
-      $isCorrect = checkData($dataForCheck);
+     // $isCorrect = checkData($dataForCheck);
       $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
       $requestWords = str_word_count($request, 1, EXCEPTIONS);
       $lastWord = end ($requestWords);
