@@ -47,7 +47,7 @@
       return true;
   }
   
-  function sendVideoHandler($video, $db, $lastWord, $chatId, $userId)
+  function sendVideoHandler($video, $db, $query, $lastWord, $chatId, $userId)
   {
       if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS)
       {
@@ -72,7 +72,7 @@
       $query = $video -> buildVideoName($requestWords);
       if($query && $lastWord) 
       {
-         sendVideoHandler($video, $db, $lastWord, $chatId, $userId);
+         sendVideoHandler($video, $db, $query, $lastWord, $chatId, $userId);
       } 
       else 
       {
