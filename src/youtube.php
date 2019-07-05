@@ -26,26 +26,26 @@
           ]);
       }
    
-    public function buildUrlsForDb ($data, $quantity): string
-    {
-        for($i=0; $i < $quantity; $i++)
-        {
-            $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
-            $result[$i] = YOUTUBE_URL . $videoIds[$i] . ' '; 
-        }
-        return implode(' ', $result);
-    }
-
-    
-   
-    public function search(string $q, int $maxResults=12, string $lang='ru' )
-    {
-        $response = $this->youtube->search->listSearch('snippet', ['q' => $q,
-                                                                   'maxResults' => $maxResults,
-                                                                   'relevanceLanguage' => $lang,
+      public function buildUrlsForDb ($data, $quantity): string
+      {
+          for($i=0; $i < $quantity; $i++)
+          {
+              $videoIds[$i] = $data -> items[$i] -> id['videoId']; 
+              $result[$i] = YOUTUBE_URL . $videoIds[$i] . ' '; 
+          }
+          return implode(' ', $result);
+      }
+       
+      
+      
+      public function search(string $q, int $maxResults=12, string $lang='ru' )
+      {
+          $response = $this->youtube->search->listSearch('snippet', ['q' => $q,
+                                                                    'maxResults' => $maxResults,
+                                                                    'relevanceLanguage' => $lang,
                                                                    'type' => 'video']);
-        return $response;
-    } 
+          return $response;
+      } 
    
     public function getPopularVideosByCategory( string $videoCategoryId, int $maxResults=10, string $region='RU', $pageToken=null)
     {
