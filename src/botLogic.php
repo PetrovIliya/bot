@@ -10,30 +10,7 @@
                    'команды - список команд',
                    '"видео" "название видео" "количество" - поиск видео',
                    'история - история пяти последних запросов',
-                   '"история" "количество" - история запросов в количестве "количество"'];
-
-  function showKeyboard($chatId)
-  {
-       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
-                                            'resize_keyboard' => true,
-                                            'one_time_keyboard' => false]);
-       sendRequest('sendMessage', ['chat_id' => $chatId, 
-                                  'reply_markup' => $replyMarkup]); 
-  }  
-
-  function sendMessage($text, $chatId)
-  {
-      sendRequest('sendMessage', ['chat_id' => $chatId, 
-                                  'text' => $text]);
-  } 
-
-  function sendCommands($chatId)
-  {
-       foreach(COMMANDS as $comand)
-       {
-         sendMessage($comand, $chatId);
-       }
-  }  
+                   '"история" "количество" - история запросов в количестве "количество"']; 
 
   function checkData($dataForCheck): bool
   {
@@ -100,23 +77,13 @@
       }
   }
 
-  function startBot($update, $db, $video)
+  function botLogicHandler($db, $video, $request, $greatings, $chatId, $userId)
   {
-      $keyboard = [["команды"],["история"]];
-      $chatId = $update['message']['chat']['id'];
-      $userId = $update['message']['from']['id'];
-      $firstName = $update['message']['from']['first_name'];
-      $lastName = $update['message']['from']['last_name'];
-      $request = $update['message']['text'];
-      $dataForCheck = [$chatId, $userId, $firstName, $lastName, $request];
-      $isCorrect = checkData($dataForCheck);
-      $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
       $requestWords = str_word_count($request, 1, EXCEPTIONS);
       $lastWord = end ($requestWords);
       $firstWord = mb_strtolower($requestWords[0]);
       switch ($firstWord): 
           case START_COMMAND: 
-              showKeyboard($chatId);
               sendMessage($greatings, $chatId); 
               break;
           case ALL_COMMANDS_COMMAND:
@@ -129,8 +96,29 @@
               historyLogicHandler($db, $userId, $chatId, $lastWord);
               break;
           default: 
-              sendRequest('sendMessage', ['chat_id' => $chatId,
-                                          'text' => 'Запрос не является командой,
-                                           со списком доступных команд можно ознакомится с помощью запроса "команды"']);
+             sendMessage('Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"',
+                          $chatId);
           endswitch;
+  }  
+
+  function startBot($update, $db, $video)
+  {
+      $keyboard = [["команды"],["история"]];
+      $chatId = $update['message']['chat']['id'];
+      $userId = $update['message']['from']['id'];
+      $firstName = $update['message']['from']['first_name'];
+      $lastName = $update['message']['from']['last_name'];
+      $request = $update['message']['text'];
+      $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
+      $dataForCheck = [$chatId, $userId, $firstName, $lastName, $request];
+      $isCorrect = checkData($dataForCheck);
+      showKeyboard($chatId);
+      if($isCorrect)
+      {
+          botLogicHandler($db, $video, $request, $greatings, $chatId, $userId);
+      }  
+      else
+      {
+          sendMessage('Произошла ошибка по техническим причинам, пожалуйста повторите попытку', $chatId)
+      }  
   }
