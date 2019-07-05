@@ -47,7 +47,6 @@
   {
       $lastWord = end($requestWords);
       $query = $video -> buildVideoName($requestWords);
-      sendMessage($query . ' ' . $lastWord, $chatId);
       if($query && $lastWord) 
       {
          sendVideoHandler($video, $db, $query, $lastWord, $chatId, $userId);
@@ -85,26 +84,20 @@
       $firstWord = mb_strtolower($requestWords[0]);
       switch ($firstWord): 
           case START_COMMAND: 
-              showKeyboard($chatId);
               sendMessage($greatings, $chatId); 
               break;
           case ALL_COMMANDS_COMMAND:
-              showKeyboard($chatId);
               sendCommands($chatId);
               break;     
           case VIDEO_COMMAND:
-              showKeyboard($chatId);
               videoLogicHandler($video, $db, $chatId, $userId, $requestWords);
               break;
           case HISTORY_COMMAND:
-              showKeyboard($chatId);
               historyLogicHandler($db, $userId, $chatId, $lastWord);
               break;
           default: 
-             sendMessage(
-                         'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"',
-                          $chatId
-                         );
+             sendMessage('Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"',
+                          $chatId);
           endswitch;
   }  
 
@@ -117,11 +110,12 @@
       $lastName = $update['message']['from']['last_name'];
       $request = $update['message']['text'];
       $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
-      $dataForCheck = [$chatId, $userId, $firstName, $lastName, $request];
+      $dataForCheck = [$chatId, $userId, $request];
       $isCorrect = checkData($dataForCheck);
       showKeyboard($chatId);
       if($isCorrect)
-      {
+      {   
+          sendMessage('test', $chatId);
           botLogicHandler($db, $video, $request, $greatings, $chatId, $userId);
       }  
       else
