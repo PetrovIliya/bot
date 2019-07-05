@@ -1,6 +1,7 @@
 <?php
   require_once('vendor/autoload.php'); 
-  require_once('src/api.php');
+  require_once('src/telegramm.php');
+  require_once('src/youtube.php');
   require_once ('src/dataBase.php');
   use Telegram\Bot\Api;
   const DEFAULT_QUANTINTY = 5;
