@@ -56,14 +56,14 @@
               sendCommands($chatId);
               break;     
           case VIDEO_COMMAND:
-              $query = getQueryForSearch($requestWords);
+              $query = $video -> buildVideoName($requestWords);
               if($query && $lastWord) 
               {
                   if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS)
                   {
-                      $dataBySearch = $video->search($query, $lastWord); 
+                      $dataBySearch = $video -> search($query, $lastWord); 
                       sendVideos($dataBySearch, $lastWord, $chatId);
-                      $serchResult = $video->buildUrlsForDb($dataBySearch, $lastWord);
+                      $serchResult = $video -> buildUrlsForDb($dataBySearch, $lastWord);
                       insertToDataBase($db, $userId, $serchResult);
                   } 
                   elseif(!is_numeric($lastWord))
