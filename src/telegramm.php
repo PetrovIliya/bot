@@ -35,8 +35,9 @@
       }
   }
 
-  function showUserHistory($data, $userId, $chatId)
+  function showUserHistory($db, $userId, $chatId, $quantinty)
   {
+      $data = convertDataToArray($db, $userId, $quantinty);
       foreach($data as $item)
       {
           sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => $item]);
