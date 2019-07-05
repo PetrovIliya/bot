@@ -80,6 +80,27 @@
       }
   }
 
+  function historyLogicHandler($db, $userId, $chatId, $lastWord)
+  {
+      if($lastWord == 'история' || $lastWord == 'История') 
+      {
+          $dataBaseData = convertDataToArray($db, $userId, DEFAULT_HISTORY_QUANTINTY);
+          showUserHistory($dataBaseData, $userId, $chatId);
+      }
+      else
+      {
+          if(is_numeric($lastWord))
+          {
+             
+              showUserHistory($db, $userId, $chatId, $lastWord);
+          }
+          else
+          {
+              sendMessage('"количество" - должно быть целым числом', $chatId);
+          }  
+      }
+  }
+
   function startBot($update, $db, $video)
   {
       $keyboard = [["команды"],["история"]];
@@ -106,23 +127,7 @@
               videoLogicHandler($video, $db, $chatId, $userId, $requestWords);
               break;
           case HISTORY_COMMAND:
-              if($lastWord == 'история' || $lastWord == 'История') 
-              {
-                  $dataBaseData = convertDataToArray($db, $userId, DEFAULT_HISTORY_QUANTINTY);
-                  showUserHistory($dataBaseData, $userId, $chatId);
-              }
-              else
-              {
-                  if(is_numeric($lastWord))
-                  {
-                      $dataBaseData = convertDataToArray($db, $userId, $lastWord);
-                      showUserHistory($dataBaseData, $userId, $chatId);
-                  }
-                  else
-                  {
-                      sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - должно быть целым числом']);
-                  }  
-              }
+              historyLogicHandler($db, $userId, $chatId, $lastWord);
               break;
           default: 
               sendRequest('sendMessage', ['chat_id' => $chatId,
