@@ -49,6 +49,7 @@
 
  function videoLogicHandler($video, $db, $chatId, $userId, $requestWords)
  {
+     $lastWord = end($requestWords);
      $query = $video -> buildVideoName($requestWords);
      if($query && $lastWord) 
      {
