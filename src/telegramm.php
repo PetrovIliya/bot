@@ -8,7 +8,7 @@
       return $update;
   }
 
-  function sendRequest($method, $params = []): array
+  function sendRequest($method, $params = []): ?array
   {
       if(!empty($params))
       {
