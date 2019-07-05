@@ -115,7 +115,6 @@
       showKeyboard($chatId);
       if($isCorrect)
       {   
-          sendMessage('test', $chatId);
           botLogicHandler($db, $video, $request, $greatings, $chatId, $userId);
       }  
       else
