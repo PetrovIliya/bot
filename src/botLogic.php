@@ -1,5 +1,5 @@
 <?php
-  const DEFAULT_QUANTINTY = 5;
+  const DEFAULT_HISTORY_QUANTINTY = 5;
   const MAX_VIDEOS = 10;
   const START_COMMAND = '/start';
   const VIDEO_COMMAND = 'видео';
@@ -46,34 +46,39 @@
       }
       return true;
   }
+  
+  function sendVideoHandler($video, $db, $lastWord, $chatId, $userId)
+  {
+      if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS)
+      {
+          $dataBySearch = $video -> search($query, $lastWord); 
+          sendVideos($dataBySearch, $lastWord, $chatId);
+          $serchResult = $video -> buildUrlsForDb($dataBySearch, $lastWord);
+          insertToDataBase($db, $userId, $serchResult);
+      } 
+      elseif(!is_numeric($lastWord))
+      {
+          sendMessage('"количество" - должно быть целым числом', $chatId);
+      } 
+      else
+      {
+          sendMessage('"количество" - не может превышать ' . MAX_VIDEOS, $chatId);
+      }     
+  }  
 
- function videoLogicHandler($video, $db, $chatId, $userId, $requestWords)
- {
-     $lastWord = end($requestWords);
-     $query = $video -> buildVideoName($requestWords);
-     if($query && $lastWord) 
-     {
-         if(is_numeric($lastWord) && $lastWord <= MAX_VIDEOS)
-         {
-             $dataBySearch = $video -> search($query, $lastWord); 
-             sendVideos($dataBySearch, $lastWord, $chatId);
-             $serchResult = $video -> buildUrlsForDb($dataBySearch, $lastWord);
-             insertToDataBase($db, $userId, $serchResult);
-         } 
-         elseif(!is_numeric($lastWord))
-         {
-             sendRequest('sendMessage', ['chat_id' => $chatId, 'text' =>  '"количество" - должно быть целым числом']);
-         } 
-         else
-         {
-             sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => '"количество" - не может превышать ' . MAX_VIDEOS]);
-         }     
-     } 
-     else 
-     {
-         sendRequest('sendMessage', ['chat_id' => $chatId, 'text' => 'не верно указаны параметры']);
-     }
- }
+  function videoLogicHandler($video, $db, $chatId, $userId, $requestWords)
+  {
+      $lastWord = end($requestWords);
+      $query = $video -> buildVideoName($requestWords);
+      if($query && $lastWord) 
+      {
+         sendVideoHandler($video, $db, $lastWord, $chatId, $userId);
+      } 
+      else 
+      {
+          sendMessage('не верно указаны параметры', $chatId);
+      }
+  }
 
   function startBot($update, $db, $video)
   {
@@ -103,7 +108,7 @@
           case HISTORY_COMMAND:
               if($lastWord == 'история' || $lastWord == 'История') 
               {
-                  $dataBaseData = convertDataToArray($db, $userId, DEFAULT_QUANTINTY);
+                  $dataBaseData = convertDataToArray($db, $userId, DEFAULT_HISTORY_QUANTINTY);
                   showUserHistory($dataBaseData, $userId, $chatId);
               }
               else
