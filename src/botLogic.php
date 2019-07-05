@@ -12,6 +12,21 @@
                    'история - история пяти последних запросов',
                    '"история" "количество" - история запросов в количестве "количество"'];
 
+  function showKeyboard($chatId)
+  {
+       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
+                                            'resize_keyboard' => true,
+                                            'one_time_keyboard' => false]);
+       sendRequest('sendMessage', ['chat_id' => $chatId, 
+                                  'reply_markup' => $replyMarkup]); 
+  }  
+
+  function sendMessage($text, $chatId)
+  {
+      sendRequest('sendMessage', ['chat_id' => $chatId, 
+                                  'text' => $text]);
+  }  
+
   function startBot($update, $db, $video)
   {
       $chatId = $update['message']['chat']['id'];
@@ -26,12 +41,8 @@
       
       switch ($firstWord): 
           case START_COMMAND: 
-              $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
-                                                    'resize_keyboard' => true,
-                                                    'one_time_keyboard' => false]);
-              sendRequest('sendMessage', ['chat_id' => $chatId, 
-                                        'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
-                                        'reply_markup' => $replyMarkup]); 
+              showKeyboard($chatId);
+              sendMesssage('Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!', $chatId); 
               break;
           case ALL_COMMANDS_COMMAND:
               foreach(COMMANDS as $comand) {
