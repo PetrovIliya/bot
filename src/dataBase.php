@@ -10,14 +10,14 @@
       return $db; 
   }
     
-  function convertDataToArray($db, $userId, $quantinty) 
+  function convertDataToArray($db, $userId, $quantinty): array 
   {
       $userQueries = $db->rawQuery('SELECT DISTINCT(userQuery)
                                     FROM history
                                     WHERE userId = ' . $userId . 
                                    ' ORDER BY id DESC LIMIT ' . $quantinty);
       $data = [];
-      foreach ($userQueries as $query): array
+      foreach ($userQueries as $query)
       {
           $tempData = str_word_count($query['userQuery'], 1, EXCEPTIONS);
           $data = array_merge($data, $tempData);
