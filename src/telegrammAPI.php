@@ -45,15 +45,6 @@
                                  'reply_markup' => $replyMarkup]); 
   }  
 
-  function showInlineKeyBoard($chatId)
-  {
-      $keyboard = [[KEYBOARD_COMMANDS_TEXT],[KEYBOARD_HISTORY_TEXT]];
-      $replyMarkup = replyKeyboardMarkup([ 'inline_keyboard' => $keyboard]);
-      sendRequest('sendMessage', ['chat_id' => $chatId, 
-                                  'text' => 'Ухх',
-                                  'reply_markup' => $replyMarkup]); 
-  }
-
   function sendCommands($chatId)
   {
        foreach(COMMANDS as $comand)
