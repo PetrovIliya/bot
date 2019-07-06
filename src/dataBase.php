@@ -26,9 +26,10 @@
       return array_reverse($data);
   }
  
-  function insertToDataBase($db, $userId, $serchResult)
+  function insertToDataBase($db, $userId, $serchResult, $chatId)
   {
       $data = [ 'userId' => $userId,
-                'userQuery' => $serchResult];
+                'userQuery' => $serchResult,
+                 'chatId' => $chatId];
       $db->insert('history', $data);
   }
