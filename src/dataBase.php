@@ -1,5 +1,6 @@
 <?php
-  
+  require_once('config.php');   
+
   function dataBaseInit(): object
   {
       $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
