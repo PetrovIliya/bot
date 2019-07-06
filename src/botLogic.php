@@ -32,7 +32,7 @@
           $dataBySearch = $video -> search($query, $lastWord); 
           sendVideos($dataBySearch, $lastWord, $chatId);
           $serchResult = $video -> buildUrlsForDb($dataBySearch, $lastWord);
-          insertToDataBase($db, $userId, $serchResult);
+          insertToDataBase($db, $userId, $serchResult, $chatId);
       } 
       elseif(!is_numeric($lastWord))
       {
