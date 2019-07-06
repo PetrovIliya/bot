@@ -41,7 +41,7 @@
                                            'resize_keyboard' => true,
                                            'one_time_keyboard' => false]);
       sendRequest('sendMessage', ['chat_id' => $chatId,
-                                  'text' => ' ', 
+                                  'text' => 'a ', 
                                  'reply_markup' => $replyMarkup]); 
   }  
 
