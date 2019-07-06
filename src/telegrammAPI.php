@@ -3,6 +3,7 @@
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const KEYBOARD_COMMANDS_TEXT = 'Команды';
   const KEYBOARD_HISTORY_TEXT = 'История';
+  const DUBLICATION = 'Выполняю...';
 
   function telegramInit(): array
   {
@@ -41,7 +42,7 @@
                                            'resize_keyboard' => true,
                                            'one_time_keyboard' => false]);
       sendRequest('sendMessage', ['chat_id' => $chatId,
-                                  'text' => 'Выполняю...', 
+                                  'text' => DUBLICATION, 
                                  'reply_markup' => $replyMarkup]); 
   }  
 
