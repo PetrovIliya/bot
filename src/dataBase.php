@@ -47,7 +47,7 @@
   function getColumn($db, $columnName, $tableName)
   {
       $categories = $db->rawQuery('SELECT DISTINCT(' . $columnName . ')
-                                   FROM' . $tableName);
+                                   FROM ' . $tableName);
       $length = count($categories);
       $data =[];
       for($i=0; $i < $length; $i++)
