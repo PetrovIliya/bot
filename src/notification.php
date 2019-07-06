@@ -1,5 +1,5 @@
 <?php 
-    require_once('../index.php');
+    require_once(realpath('../index.php'));
     
     function test($chatId) 
     {
