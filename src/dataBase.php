@@ -1,19 +1,5 @@
 <?php
-  const HOST = 'eu-cdbr-west-02.cleardb.net';
-  const USER_NAME = 'b2f8e06330d503';
-  const PASSWORD = 'fb10e00e0584280';
-  const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5'; 
-  const CHAT_ID_COLUMN = 'chatId';
-  const USER_ID_COLUMN = 'userId';
-  const USER_QUERY_COLUMN = 'userQuery';
-  const CATEGORIES_COLUMN = 'categoriesName';
-  const USER_CATEGORY_COLUMN = 'userCategory';
-  const CATEGORIES_TABLE = 'categories';
-  const HISTORY_TABLE = 'history';
-  const USERS_TABLE = 'users';
-  const DEFAULT_CATEGORY = 'Развлечения';
-  const UNSCRIBED = 'unscribed';
- 
+  
   function dataBaseInit(): object
   {
       $db = new MysqliDb (HOST, USER_NAME, PASSWORD, DATA_BASE_NAME);
