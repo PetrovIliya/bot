@@ -1,6 +1,8 @@
 <?php
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
+  cons KEYBOARD_COMMANDS_TEXT = 'Команды';
+  const KEYBOARD_HISTORY_TEXT = 'История';
 
   function telegramInit(): array
   {
@@ -34,18 +36,22 @@
 
   function showKeyboard($chatId)
   {
-       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
+      $keyboard = [[KEYBOARD_COMMANDS_TEXT],[KEYBOARD_HISTORY_TEXT]];
+      $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                             'resize_keyboard' => true,
                                             'one_time_keyboard' => false]);
-       sendRequest('sendMessage', ['chat_id' => $chatId, 
+      sendRequest('sendMessage', ['chat_id' => $chatId, 
                                   'reply_markup' => $replyMarkup]); 
   }  
 
   function showInlineKeyBoard($chatId)
   {
-      $replyMarkup = replyKeyboardMarkup([ 'text' => $keyboard]);
+      $replyMarkup = replyKeyboardMarkup([ 'text' => KEYBOARD_COMMANDS_TEXT]);
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                   'reply_markup' => $replyMarkup]); 
+     $replyMarkup = replyKeyboardMarkup([ 'text' => KEYBOARD_HISTORY_TEXT]); 
+     sendRequest('sendMessage', ['chat_id' => $chatId, 
+                                 'reply_markup' => $replyMarkup]); 
   }
 
   function sendCommands($chatId)
