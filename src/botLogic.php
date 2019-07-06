@@ -84,7 +84,6 @@
       $firstWord = mb_strtolower($requestWords[0]);
       switch ($firstWord): 
           case START_COMMAND: 
-              showKeyboard($chatId);
               sendMessage($greatings, $chatId); 
               break;
           case ALL_COMMANDS_COMMAND:
