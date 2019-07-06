@@ -56,13 +56,13 @@
       return false;
   }
 
-  function unscribe($db, $chatId)
+  function changeSubscribe($db, $chatId, $category)
   {
       $db -> where(CHAT_ID_COLUMN, $chatId);
-      $data = [USER_CATEGORY_COLUMN => UNSCRIBED];
+      $data = [USER_CATEGORY_COLUMN => $category];
       $db->update(USERS_TABLE, $data);
   }  
-
+  
   function autoSubscribe($db, $chatId)
   {
       $chatIds = getColumn($db, CHAT_ID_COLUMN, USERS_TABLE);
