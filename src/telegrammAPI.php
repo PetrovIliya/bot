@@ -40,7 +40,8 @@
        $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                            'resize_keyboard' => true,
                                            'one_time_keyboard' => false]);
-      sendRequest('sendMessage', ['chat_id' => $chatId,
+      sendRequest('sendMessage', ['chat_id' => $chatId, 
+                                 'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
                                  'reply_markup' => $replyMarkup]); 
   }  
 
