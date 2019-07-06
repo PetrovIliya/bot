@@ -4,7 +4,7 @@
     function test($chatId, $db) 
     {
         $userIds = $db->get('userID');
-        forech($userIds as $data)
+        foreach($userIds as $data)
         {
           sendMessage($data, $chatId);
         }
