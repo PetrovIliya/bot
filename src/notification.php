@@ -3,10 +3,11 @@
     
     function test($chatId, $db) 
     {
-        $userId = $db->get ("history", null, 'userId');
+        $cols = Array ("userId")  
+        $userId = $db->get ("history", null, $cols);
         foreach($userIds as $data)
         {
-         //sendMessage($data, $chatId);
+           sendMessage($data, $chatId);
         }
          
     }
