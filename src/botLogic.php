@@ -115,6 +115,7 @@
       $dataForCheck = [$chatId, $userId, $request];
       $isCorrect = checkData($dataForCheck);
       showKeyboard($chatId);
+      $keyboard = [["команды"],["история"]];
       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                            'resize_keyboard' => true,
                                            'one_time_keyboard' => false]);
