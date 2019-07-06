@@ -36,12 +36,13 @@
 
   function showKeyboard($chatId)
   {
-      $keyboard = [['Команды'],['История']];
+       $keyboard = [["команды"],["история"]];
       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
-                                            'resize_keyboard' => true,
-                                            'one_time_keyboard' => false]);
+                                           'resize_keyboard' => true,
+                                           'one_time_keyboard' => false]);
       sendRequest('sendMessage', ['chat_id' => $chatId, 
-                                  'reply_markup' => $replyMarkup]); 
+                                 'text' => 'Добро пожаловать ' . $userFirstName . ' ' . $userLastName . '!',
+                                 'reply_markup' => $replyMarkup]); 
   }  
 
   function showInlineKeyBoard($chatId)
