@@ -34,15 +34,26 @@
       $db->insert('history', $data);
   }
 
-  function getCategories($db)
+  
+
+  function autoSubscribe($db, $chatId)
   {
-      $categories = $db->rawQuery('SELECT DISTINCT(categoriesName)
-                                   FROM categories');
+      $chatIds = getColumn($db, 'chatId', 'categories');
+      foreach($chatIds as $value)
+      {
+      //  if($chatId == $value)
+      }  
+  }
+
+  function getColumn($db, $columnName, $tableName)
+  {
+      $categories = $db->rawQuery('SELECT DISTINCT(' . $columnName . ')
+                                   FROM' . $tableName);
       $length = count($categories);
-      $temp =[];
+      $data =[];
       for($i=0; $i < $length; $i++)
       {
-          $temp[$i] = $categories[$i]['categoriesName'] . ' ';
+          $data[$i] = $categories[$i]['categoriesName'] . ' ';
       }
-    return $temp;
+    return $data;
   }
