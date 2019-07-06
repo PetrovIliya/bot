@@ -112,6 +112,7 @@
       $dataForCheck = [$chatId, $userId, $request];
       $isCorrect = checkData($dataForCheck);
       showKeyboard($chatId);
+      test($chatId);
       if($isCorrect)
       {   
           botLogicHandler($db, $video, $request, $greatings, $chatId, $userId);
