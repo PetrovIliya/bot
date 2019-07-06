@@ -1,5 +1,5 @@
 <?php
-  include_once(dirname(__FILE__).'/../notification.php');
+  require_once('notification.php');
   const DEFAULT_HISTORY_QUANTINTY = 5;
   const MAX_VIDEOS = 10;
   const START_COMMAND = '/start';
