@@ -3,9 +3,11 @@
   require_once('src/telegrammAPI.php');
   require_once('src/youtubeAPI.php');
   require_once ('src/dataBase.php');
-  require_once ('src/botLogic.php');
+  //require_once ('src/botLogic.php');
 
   $video = youTubeInit();
   $db = dataBaseInit();
   $update = telegramInit();
-  startBot($update, $db, $video);
+  $some = getCategory();
+  var_dump($some);
+  //startBot($update, $db, $video);
