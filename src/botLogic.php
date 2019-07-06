@@ -96,7 +96,8 @@
       $firstWord = mb_strtolower($requestWords[0]);
       switch ($firstWord): 
           case START_COMMAND: 
-              sendMessage($greatings, $chatId); 
+              sendMessage($greatings, $chatId);
+              autoSubscribe($db);
               break;
           case ALL_COMMANDS_COMMAND:
               sendCommands($chatId);
