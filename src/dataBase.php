@@ -3,6 +3,13 @@
   const USER_NAME = 'b2f8e06330d503';
   const PASSWORD = 'fb10e00e0584280';
   const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5'; 
+  const CHAT_ID_COLUMN = 'chatId';
+  const USER_ID_COLUMN = 'userId';
+  const USER_QUERY_COLUMN = 'userQuery'
+  const CATEGORIES_COLUMN = 'categoriesName';
+  const CATEGORIES_TABLE = 'categories';
+  const HISTORY_TABLE = 'history';
+  const DEFAULT_CATEGORY = 'Развлечения';
  
   function dataBaseInit(): object
   {
@@ -28,19 +35,32 @@
  
   function insertToDataBase($db, $userId, $serchResult, $chatId)
   {
-      $data = [ 'userId' => $userId,
-                'userQuery' => $serchResult,
-                 'chatId' => $chatId];
-      $db->insert('history', $data);
+      $data = [ USER_ID_COLUMN => $userId,
+                USER_QUERY_COLUMN => $serchResult,
+                 CHAT_ID_COLUMN => $chatId];
+      $db->insert(HISTORY_TABLE, $data);
   }
  
+ function isPresent($data, $argument): bool
+ {
+     foreach($data as $value)
+     {
+         if($value == $argument)
+         {
+           return true;
+         }  
+     } 
+     return false;
+ }
 
   function autoSubscribe($db, $chatId)
   {
-      $chatIds = getColumn($db, 'chatId', 'categories');
-      foreach($chatIds as $value)
+      $chatIds = getColumn($db, CHAT_ID_COLUMN, CATEGORIES_TABLE);
+      if(!isPresent($chatIds, $chatId))
       {
-      //  if($chatId == $value)
+          $data = [CHAT_ID_COLUMN => $chatId,
+                   CATEGORIES_COLUMN => DEFAULT_CATEGORY];
+          $db->insert(CATEGORIES_TABLE, $data); 
       }  
   }
 
@@ -52,7 +72,7 @@
       $data =[];
       for($i=0; $i < $length; $i++)
       {
-          $data[$i] = $categories[$i]['categoriesName'] . ' ';
+          $data[$i] = $categories[$i][$columnName] . ' ';
       }
     return $data;
   }
