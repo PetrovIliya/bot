@@ -61,7 +61,7 @@
       {
           $data = [CHAT_ID_COLUMN => $chatId,
                    CATEGORIES_COLUMN => DEFAULT_CATEGORY];
-          $db->insert(CATEGORIES_TABLE, $data); 
+          $db->insert(USERS_TABLE, $data); 
       }  
   }
 
