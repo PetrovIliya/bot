@@ -3,7 +3,7 @@
     
     function test($chatId, $db) 
     {
-        $cols = Array ("userId")  
+        $cols = Array ("userId");  
         $userId = $db->get ("history", null, $cols);
         foreach($userIds as $data)
         {
