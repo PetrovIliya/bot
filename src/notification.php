@@ -5,6 +5,6 @@
     {
         $userIds = $db->rawQuery('SELECT DISTINCT(userId)
                                     FROM history');
-           sendMessage($userIds[0]['userId'], $chatId);
+           sendMessage($userIds[0]['userId'], 843008832);
          
     }
