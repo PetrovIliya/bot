@@ -1,11 +1,13 @@
 <?php
   require_once('notification.php');
   const DEFAULT_HISTORY_QUANTINTY = 5;
+  const DEFALT_CATEGORY = 'развлечения';
   const MAX_VIDEOS = 10;
   const START_COMMAND = '/start';
   const VIDEO_COMMAND = 'видео';
   const ALL_COMMANDS_COMMAND = 'команды';
   const HISTORY_COMMAND = 'история';
+  const CATEGORIES_COMAND = 'катгории';
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789./?=-_:';  
   const COMMANDS = ['знаки "<" и ">" служат только для обозначения разделов команд, набирать их не стоит', 
                    'команды - список команд',
@@ -78,6 +80,15 @@
       }
   }
 
+  function categoriesLogicHandler($db, $chatId)
+  {
+   $categories = getCategories($db);
+   foreach($categories as $category)
+   {
+     sendMessage($category, $chatId);
+   }  
+  }  
+
   function botLogicHandler($db, $video, $request, $greatings, $chatId, $userId)
   {
       $requestWords = str_word_count($request, 1, EXCEPTIONS);
@@ -96,6 +107,8 @@
           case HISTORY_COMMAND:
               historyLogicHandler($db, $userId, $chatId, $lastWord);
               break;
+          case CATEGORIES_COMAND:
+              categoriesLogicHandler($db, $chatId);
           default: 
              sendMessage('Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"',
                           $chatId);
@@ -112,8 +125,7 @@
       $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
       $dataForCheck = [$chatId, $userId, $request];
       $isCorrect = checkData($dataForCheck);
-      showKeyboard($chatId);
-      test($chatId, $db);
+      showKeyboard($chatId);   
       if($isCorrect)
       {   
           botLogicHandler($db, $video, $request, $greatings, $chatId, $userId);
