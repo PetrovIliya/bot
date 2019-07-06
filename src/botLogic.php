@@ -103,7 +103,6 @@
 
   function startBot($update, $db, $video)
   {
-      $keyboard = [["команды"],["история"]];
       $chatId = $update['message']['chat']['id'];
       $userId = $update['message']['from']['id'];
       $firstName = $update['message']['from']['first_name'];
