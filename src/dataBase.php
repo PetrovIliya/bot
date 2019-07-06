@@ -5,7 +5,7 @@
   const DATA_BASE_NAME =  'heroku_a3471d601ba1cc5'; 
   const CHAT_ID_COLUMN = 'chatId';
   const USER_ID_COLUMN = 'userId';
-  const USER_QUERY_COLUMN = 'userQuery'
+  const USER_QUERY_COLUMN = 'userQuery';
   const CATEGORIES_COLUMN = 'categoriesName';
   const CATEGORIES_TABLE = 'categories';
   const HISTORY_TABLE = 'history';
