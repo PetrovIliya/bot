@@ -55,6 +55,21 @@
                                                                    'type' => 'video']);
           return $response;
       } 
+    
+    public function getCategory($regionCode = 'RU')
+    {
+        $result = $this->youtube->videoCategories->listVideoCategories('snippet',
+            array('hl' => 'ru', 'regionCode' => $regionCode));
+
+        $category = [];
+        $tempCategories = $result->getItems(); //масиив объектов Google_Service_YouTube_VideoCategory
+
+        array_walk($tempCategories, function ($value) use (&$category){
+            $category[$value['id']] =  $value['snippet']['title'];
+        });
+
+        return $category;
+    }
    
     public function getPopularVideosByCategory( string $videoCategoryId, int $maxResults=10, string $region='RU', $pageToken=null)
     {
