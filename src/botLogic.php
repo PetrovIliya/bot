@@ -110,6 +110,10 @@
               break;
           case CATEGORIES_COMAND:
               categoriesLogicHandler($db, $chatId);
+              break;
+          case UNSCRIBE_COMMAND
+              unscribe($db, $chatId);
+              break;
           default: 
              sendMessage('Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"',
                           $chatId);
