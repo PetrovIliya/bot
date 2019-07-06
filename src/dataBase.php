@@ -7,11 +7,12 @@
   const USER_ID_COLUMN = 'userId';
   const USER_QUERY_COLUMN = 'userQuery';
   const CATEGORIES_COLUMN = 'categoriesName';
-  const CATEGORIES_TABLE = 'categories';
   const USER_CATEGORY_COLUMN = 'userCategory';
+  const CATEGORIES_TABLE = 'categories';
   const HISTORY_TABLE = 'history';
   const USERS_TABLE = 'users';
   const DEFAULT_CATEGORY = 'Развлечения';
+  const UNSCRIBED = 'unscribed';
  
   function dataBaseInit(): object
   {
@@ -43,17 +44,24 @@
       $db->insert(HISTORY_TABLE, $data);
   }
  
- function isPresent($data, $argument): bool
- {
-     foreach($data as $value)
-     {
-         if($value == $argument)
-         {
-           return true;
-         }  
-     } 
-     return false;
- }
+  function isPresent($data, $argument): bool
+  {
+      foreach($data as $value)
+      {
+          if($value == $argument)
+          {
+            return true;
+          }  
+      } 
+      return false;
+  }
+
+  function unscribe($db, $chatId)
+  {
+      $db -> where(CHAT_ID_COLUMN, $chatId);
+      $data = [USER_CATEGORY_COLUMN => UNSCRIBED];
+      $db->update(USERS_TABLE, $data);
+  }  
 
   function autoSubscribe($db, $chatId)
   {
