@@ -1,3 +1,7 @@
 <?php 
-    requere_once(youtubeAPI.php);\
-    requere_once(telegram.php); 
+    requere_once('../index.php');
+    
+    function test($chatId) 
+    {
+        sendMessage('test', $chatId);
+    }
