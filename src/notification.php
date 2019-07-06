@@ -1,7 +1,12 @@
 <?php 
     require_once(dirname(__FILE__).'/../index.php');
     
-    function test($chatId) 
+    function test($chatId, $db) 
     {
-        sendMessage('test', $chatId);
+        $userIds = $db->get('userID');
+        forech($userIds as $data)
+        {
+          sendMessage($data, $chatId);
+        }
+         
     }
