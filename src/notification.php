@@ -5,9 +5,6 @@
     {
         $userIds = $db->rawQuery('SELECT DISTINCT(userId)
                                     FROM history');
-        foreach($userIds as $data)
-        {
-           sendMessage($data, $chatId);
-        }
+           sendMessage($userIds[0]['userId'], $chatId);
          
     }
