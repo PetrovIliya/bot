@@ -6,7 +6,7 @@
         $userIds = $db->get('userId');
         foreach($userIds as $data)
         {
-         // sendMessage($data, $chatId);
+         sendMessage($data, $chatId);
         }
          
     }
