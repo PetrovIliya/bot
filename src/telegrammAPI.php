@@ -23,7 +23,7 @@
       return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY); 
   }
   
-  function replyKeyboardMarkup($params=[]) 
+  function replyKeyboardMarkup(array $params) 
   {
       return json_encode($params);
   }
