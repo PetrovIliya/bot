@@ -1,26 +1,5 @@
 <?php
   require_once('notification.php');
-  const PARAMETRS_ERROR_MESSAGE = 'не верно указаны параметры';
-  const QUANTINTY_ERROR_MESSAGE = '<количество> - должно быть целым числом';
-  const MAX_QUANTINTY_ERROR_MESSAGE = '<количество> - не может превышать 10';
-  const UNSCRIBE_MESSAGE = 'Вы успешно отписаны от уведомлений';
-  const USER_ERROR_MESSAGE = 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса <команды>"';
-  const DEFAULT_HISTORY_QUANTINTY = 5;
-  const DEFALT_CATEGORY = 'развлечения';
-  const MAX_VIDEOS = 10;
-  const START_COMMAND = '/start';
-  const VIDEO_COMMAND = 'видео';
-  const ALL_COMMANDS_COMMAND = 'команды';
-  const HISTORY_COMMAND = 'история';
-  const CATEGORIES_COMAND = 'категории';
-  const UNSCRIBE_COMMAND = 'отписаться';
-  const SUBSCRIBE_COMAND = 'подписаться';
-  const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789./?=-_:';  
-  const COMMANDS = ['знаки "<" и ">" служат только для обозначения разделов команд, набирать их не стоит', 
-                   'команды - список команд',
-                   '<видео> <название видео> <количество> - поиск видео',
-                   'история - история пяти последних запросов',
-                   '<история> <количество> - история запросов в количестве <количество>']; 
 
   function checkData($dataForCheck): bool
   {
