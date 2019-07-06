@@ -36,7 +36,7 @@
 
   function showKeyboard($chatId)
   {
-      $keyboard = [[KEYBOARD_COMMANDS_TEXT],[KEYBOARD_HISTORY_TEXT]];
+      $keyboard = [['Команды'],['История']];
       $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                             'resize_keyboard' => true,
                                             'one_time_keyboard' => false]);
