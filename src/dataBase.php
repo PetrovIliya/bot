@@ -9,6 +9,7 @@
   const CATEGORIES_COLUMN = 'categoriesName';
   const CATEGORIES_TABLE = 'categories';
   const HISTORY_TABLE = 'history';
+  const USERS_TABLE = 'users';
   const DEFAULT_CATEGORY = 'Развлечения';
  
   function dataBaseInit(): object
@@ -55,7 +56,7 @@
 
   function autoSubscribe($db, $chatId)
   {
-      $chatIds = getColumn($db, CHAT_ID_COLUMN, CATEGORIES_TABLE);
+      $chatIds = getColumn($db, CHAT_ID_COLUMN, USERS_TABLE);
       if(!isPresent($chatIds, $chatId))
       {
           $data = [CHAT_ID_COLUMN => $chatId,
