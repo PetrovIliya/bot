@@ -5,6 +5,6 @@
     {
         $userIds = $db->rawQuery('SELECT DISTINCT(userId)
                                     FROM history');
-           sendMessage('', 819183182);
+           sendMessage('привет что ли', 819183182);
          
     }
