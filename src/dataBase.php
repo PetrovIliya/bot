@@ -33,8 +33,7 @@
                  'chatId' => $chatId];
       $db->insert('history', $data);
   }
-
-  function   
+ 
 
   function autoSubscribe($db, $chatId)
   {
