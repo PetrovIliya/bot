@@ -41,6 +41,13 @@
                                   'reply_markup' => $replyMarkup]); 
   }  
 
+  function showInlineKeyBoard($chatId)
+  {
+      $replyMarkup = replyKeyboardMarkup([ 'text' => $keyboard]);
+      sendRequest('sendMessage', ['chat_id' => $chatId, 
+                                  'reply_markup' => $replyMarkup]); 
+  }
+
   function sendCommands($chatId)
   {
        foreach(COMMANDS as $comand)
