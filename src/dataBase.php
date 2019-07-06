@@ -33,3 +33,16 @@
                  'chatId' => $chatId];
       $db->insert('history', $data);
   }
+
+  function getCategories($db)
+  {
+      $categories = $db->rawQuery('SELECT DISTINCT(categoriesName)
+                                   FROM categories');
+      $length = count($categories);
+      $temp =[];
+      for($i=0; $i < $length; $i++)
+      {
+          $temp[$i] = $categories[$i]['categoriesName'] . ' ';
+      }
+    return $temp;
+  }
