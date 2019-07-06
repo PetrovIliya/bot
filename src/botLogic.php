@@ -88,12 +88,15 @@
               break;
           case ALL_COMMANDS_COMMAND:
               sendCommands($chatId);
+              showInlineKeyBoard($chatId);
               break;     
           case VIDEO_COMMAND:
               videoLogicHandler($video, $db, $chatId, $userId, $requestWords);
+              showInlineKeyBoard($chatId;
               break;
           case HISTORY_COMMAND:
               historyLogicHandler($db, $userId, $chatId, $lastWord);
+              showInlineKeyBoard($chatId);
               break;
           default: 
              sendMessage('Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса "команды"',
