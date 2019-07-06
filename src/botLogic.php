@@ -92,7 +92,7 @@
               break;     
           case VIDEO_COMMAND:
               videoLogicHandler($video, $db, $chatId, $userId, $requestWords);
-              showInlineKeyBoard($chatId;
+              showInlineKeyBoard($chatId);
               break;
           case HISTORY_COMMAND:
               historyLogicHandler($db, $userId, $chatId, $lastWord);
