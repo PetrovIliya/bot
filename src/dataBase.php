@@ -72,7 +72,7 @@
       $data =[];
       for($i=0; $i < $length; $i++)
       {
-          $data[$i] = $categories[$i][$columnName] . ' ';
+          $data[$i] = $categories[$i][$columnName];
       }
     return $data;
   }
