@@ -8,6 +8,6 @@
   $video = youTubeInit();
 //  $db = dataBaseInit();
  // $update = telegramInit();
-  $some = getCategory();
+  $some = $video -> getCategory();
   var_dump($some);
   //startBot($update, $db, $video);
