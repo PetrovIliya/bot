@@ -82,7 +82,7 @@
 
   function categoriesLogicHandler($db, $chatId)
   {
-   $categories = getCategories($db);
+   $categories = getColumn($db, 'categoriesName', 'categories');
    foreach($categories as $category)
    {
      sendMessage($category, $chatId);
