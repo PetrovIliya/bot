@@ -3,8 +3,8 @@
     
     function test($chatId, $db) 
     {
-        $cols = Array ("userId");  
-        $userId = $db->get ("history", null, $cols);
+        $userIds = $db->rawQuery('SELECT DISTINCT(userId)
+                                    FROM history');
         foreach($userIds as $data)
         {
            sendMessage($data, $chatId);
