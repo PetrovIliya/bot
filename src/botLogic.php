@@ -119,11 +119,11 @@
               categoriesLogicHandler($db, $chatId);
               break;
           case UNSCRIBE_COMMAND:
-              unscribe($db, $chatId);
+              changeSubscribe($db, $chatId, UNSCRIBED);
               sendMessage(UNSCRIBE_MESSAGE, $chatId);
               break;
           case SUBSCRIBE_COMAND:
-              subscribe($db, $chatId);
+             // subscribe($db, $chatId);
               break;
           default: 
               sendMessage(USER_ERROR_MESSAGE, $chatId);
