@@ -7,7 +7,7 @@
   const VIDEO_COMMAND = 'видео';
   const ALL_COMMANDS_COMMAND = 'команды';
   const HISTORY_COMMAND = 'история';
-  const CATEGORIES_COMAND = 'катгории';
+  const CATEGORIES_COMAND = 'категории';
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789./?=-_:';  
   const COMMANDS = ['знаки "<" и ">" служат только для обозначения разделов команд, набирать их не стоит', 
                    'команды - список команд',
