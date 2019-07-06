@@ -1,7 +1,7 @@
 <?php
   const TOKEN = '831061547:AAFwm0s2dLQIWLhRHJljKVVRv4aTzwpbgI0';
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
-  cons KEYBOARD_COMMANDS_TEXT = 'Команды';
+  const KEYBOARD_COMMANDS_TEXT = 'Команды';
   const KEYBOARD_HISTORY_TEXT = 'История';
 
   function telegramInit(): array
