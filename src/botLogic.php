@@ -14,6 +14,7 @@
   const HISTORY_COMMAND = 'история';
   const CATEGORIES_COMAND = 'категории';
   const UNSCRIBE_COMMAND = 'отписаться';
+  const SUBSCRIBE_COMAND = 'подписаться';
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789./?=-_:';  
   const COMMANDS = ['знаки "<" и ">" служат только для обозначения разделов команд, набирать их не стоит', 
                    'команды - список команд',
@@ -121,8 +122,11 @@
               unscribe($db, $chatId);
               sendMessage(UNSCRIBE_MESSAGE, $chatId);
               break;
+          case SUBSCRIBE_COMAND:
+              subscribe($db, $chatId);
+              break;
           default: 
-             sendMessage(USER_ERROR_MESSAGE, $chatId);
+              sendMessage(USER_ERROR_MESSAGE, $chatId);
           endswitch;
   }  
 
