@@ -8,6 +8,7 @@
   const USER_QUERY_COLUMN = 'userQuery';
   const CATEGORIES_COLUMN = 'categoriesName';
   const CATEGORIES_TABLE = 'categories';
+  const USER_CATEGORY_COLUMN = 'userCategory';
   const HISTORY_TABLE = 'history';
   const USERS_TABLE = 'users';
   const DEFAULT_CATEGORY = 'Развлечения';
@@ -60,7 +61,7 @@
       if(!isPresent($chatIds, $chatId))
       {
           $data = [CHAT_ID_COLUMN => $chatId,
-                   CATEGORIES_COLUMN => DEFAULT_CATEGORY];
+                   USER_CATEGORY_COLUMN => DEFAULT_CATEGORY];
           $db->insert(USERS_TABLE, $data); 
       }  
   }
