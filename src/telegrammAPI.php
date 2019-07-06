@@ -46,7 +46,7 @@
 
   function showInlineKeyBoard($chatId)
   {
-      $keyboard = [[KEYBOARD_COMMANDS_TEXT],[KEYBOARD_HISTORY_TEXT]];
+      $keyboard = [['text' => KEYBOARD_COMMANDS_TEXT],['text' => KEYBOARD_HISTORY_TEXT]];
       $replyMarkup = replyKeyboardMarkup([ 'inline_keyboard' => $keyboard]);
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                   'reply_markup' => $replyMarkup]); 
