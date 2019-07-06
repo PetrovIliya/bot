@@ -1,5 +1,6 @@
 <?php
   require_once('notification.php');
+  require_once('config.php');               
 
   function checkData($dataForCheck): bool
   {
