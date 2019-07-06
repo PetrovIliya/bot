@@ -6,8 +6,8 @@
   require_once ('src/botLogic.php');
 
   $video = youTubeInit();
-  $db = dataBaseInit();
-  $update = telegramInit();
+  //$db = dataBaseInit();
+  //$update = telegramInit();
   
   $test = $video -> getPopularVideosByCategory(DEFAULT_CATEGORY);
   var_dump($test);
