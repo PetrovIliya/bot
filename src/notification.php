@@ -5,8 +5,6 @@
     {
         $userIds = $db->rawQuery('SELECT DISTINCT(userId)
                                     FROM history');
-           while(true) {
-           sendMessage('while tru', 819183182);
-           }  
+     
          
     }
