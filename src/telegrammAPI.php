@@ -3,6 +3,7 @@
   const TELEGRAM_URL = 'https://api.telegram.org/bot' . TOKEN . '/';
   const KEYBOARD_COMMANDS_TEXT = 'Команды';
   const KEYBOARD_HISTORY_TEXT = 'История';
+  const KEYBOARD_CATEGORIES_TEXT = 'Категории';
   const DUBLICATION = 'Выполняю...';
 
   function telegramInit(): array
@@ -37,7 +38,7 @@
 
   function showKeyboard($chatId)
   {
-       $keyboard = [[KEYBOARD_COMMANDS_TEXT],[KEYBOARD_HISTORY_TEXT]];
+       $keyboard = [[KEYBOARD_COMMANDS_TEXT], [KEYBOARD_HISTORY_TEXT], [KEYBOARD_CATEGORIES_TEXT]];
        $replyMarkup = replyKeyboardMarkup([ 'keyboard' => $keyboard,
                                            'resize_keyboard' => true,
                                            'one_time_keyboard' => false]);
