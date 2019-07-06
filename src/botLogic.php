@@ -117,7 +117,7 @@
           case CATEGORIES_COMAND:
               categoriesLogicHandler($db, $chatId);
               break;
-          case UNSCRIBE_COMMAND
+          case UNSCRIBE_COMMAND:
               unscribe($db, $chatId);
               sendMessage(UNSCRIBE_MESSAGE, $chatId);
               break;
