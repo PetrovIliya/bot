@@ -97,7 +97,7 @@
       switch ($firstWord): 
           case START_COMMAND: 
               sendMessage($greatings, $chatId);
-              autoSubscribe($db);
+              autoSubscribe($db, $chatId)
               break;
           case ALL_COMMANDS_COMMAND:
               sendCommands($chatId);
