@@ -23,7 +23,7 @@
       return  json_decode(file_get_contents($url), JSON_OBJECT_AS_ARRAY); 
   }
   
-  function replyKeyboardMarkup(array $params) 
+  function replyKeyboardMarkup($params=[]) 
   {
       return json_encode($params);
   }
@@ -46,7 +46,7 @@
 
   function showInlineKeyBoard($chatId)
   {
-      $keyboard = [['text' => KEYBOARD_COMMANDS_TEXT],['text' => KEYBOARD_HISTORY_TEXT]];
+      $keyboard = [[KEYBOARD_COMMANDS_TEXT],[KEYBOARD_HISTORY_TEXT]];
       $replyMarkup = replyKeyboardMarkup([ 'inline_keyboard' => $keyboard]);
       sendRequest('sendMessage', ['chat_id' => $chatId, 
                                   'reply_markup' => $replyMarkup]); 
