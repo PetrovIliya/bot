@@ -75,7 +75,7 @@
 
         try {
             $response = $this->youtube->videos->listVideos('snippet, statistics, contentDetails',
-                array('videoCategoryId' => $videoCategoryId,
+                array('videoCategoryTitle' => $videoCategoryId,
                     'maxResults' => $maxResults,
                     'regionCode' => $region,
                     'chart' => 'mostPopular',
