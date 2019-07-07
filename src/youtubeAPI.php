@@ -78,8 +78,8 @@
                                                           ['videoCategoryId' => $videoCategoryId,
                                                            'maxResults' => $maxResults,
                                                            'regionCode' => $region,
-                                                           'chart' => 'mostPopular',
-                                                           'pageToken' => $pageToken]);
+                                                           'chart' => 'mostPopular'/*,
+                                                           'pageToken' => $pageToken*/]);
         } catch (\Google_Service_Exception $e){
             return false;
         }
