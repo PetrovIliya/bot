@@ -9,6 +9,6 @@
   //$db = dataBaseInit();
   //$update = telegramInit();
   
-  $test = $video -> getPopularVideosByCategory('Шоу', 10, 'RU');
+  $test = $video -> getPopularVideosByCategory('Шоу', 10, 'RU', 1);
   var_dump($test);
  // startBot($update, $db, $video);
