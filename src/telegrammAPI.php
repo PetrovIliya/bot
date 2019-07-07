@@ -1,7 +1,7 @@
 <?php
   require_once('config.php');   
   
-  function telegramInit(): array
+  function telegramInit(): ?array
   {
       $update = json_decode(file_get_contents('php://input'), JSON_OBJECT_AS_ARRAY); 
       return $update;
