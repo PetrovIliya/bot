@@ -21,6 +21,7 @@
   const USERS_TABLE = 'users';
   const DEFAULT_CATEGORY = 24;
   const UNSCRIBED = NULL;
+  const SUBSCRIBE_ERROR_MESSAGE = 'Не верно указана категория, либо такой не существует';
   const PARAMETRS_ERROR_MESSAGE = 'не верно указаны параметры';
   const QUANTINTY_ERROR_MESSAGE = '<количество> - должно быть целым числом';
   const MAX_QUANTINTY_ERROR_MESSAGE = '<количество> - не может превышать 10';
