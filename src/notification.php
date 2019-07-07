@@ -21,7 +21,17 @@
       return $result; 
   }  
 
-  function sendNotification($data)
+  function sendTopVideos($video, $category, $chatId)
+  {
+       $videoInfo = $video -> getPopularVideosByCategory($category, DEFAULT_TOP_VIDEO_QUANTINTY);
+       for($i=0; $i < DEFAULT_TOP_VIDEO_QUANTINTY; $i++)
+       {  
+           $videoId = $videoInfo["items"][$i]["id"];
+           sendMessage(YOUTUBE_URL . $videoId, $chatId);
+       }  
+  }  
+
+  function sendNotification($data, $video)
   {
       foreach($data as $key => $value)
       {
@@ -29,14 +39,13 @@
           {
               foreach($value as $val)
               {
-                  //echo $key . ' ' . $val;
-                  sendMessage('all right', $val);
+                  sendTopVideos($video, $key, $val);
               }  
           }  
       }  
   }  
   
-  function startNotificationHandler($db) 
+  function startNotificationHandler($db, $video) 
   { 
       $data = buildData($db);
       sendNotification($data);
