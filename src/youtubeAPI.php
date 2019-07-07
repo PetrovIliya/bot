@@ -71,18 +71,22 @@
         return $category;
     }
    
-    public function getPopularVideosByCategory( string $videoCategoryId, int $maxResults=10, string $region='RU', $pageToken=null)
-    {
+   public function getPopularVideosByCategory( string $videoCategoryId, int $maxResults=10, string $region='RU', $pageToken=null){
+
         try {
             $response = $this->youtube->videos->listVideos('snippet, statistics, contentDetails',
-                                                          ['videoCategoryId' => $videoCategoryId,
-                                                           'maxResults' => $maxResults,
-                                                           'regionCode' => $region,
-                                                           'chart' => 'mostPopular'/*,
-                                                           'pageToken' => $pageToken*/]);
+                array('videoCategoryId' => $videoCategoryId,
+                    'maxResults' => $maxResults,
+                    'regionCode' => $region,
+                    'chart' => 'mostPopular',
+                    'pageToken' => $pageToken,
+                ));
+
         } catch (\Google_Service_Exception $e){
             return false;
         }
+
         return $response; //массив объектов Google_Service_YouTube_Video
+
     }
   }
