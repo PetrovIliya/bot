@@ -46,6 +46,23 @@
           return $response;
       } 
     
+    public function builVideoName($data): ?string 	
+    {	
+        $length = count($data) - 1;	
+        for($i = 1; $i < $length; $i++) 	
+        {	
+            if($length == $i)
+            {
+                $result .= $data[$i];
+            }  
+            else
+            {
+              $result .= $data[$i] . ' ';
+            }	
+        }	
+        return $result;	
+    }
+    
     public function getCategory($regionCode = 'RU')
     {
         $result = $this->youtube->videoCategories->listVideoCategories('snippet',
