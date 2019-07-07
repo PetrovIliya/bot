@@ -1,6 +1,21 @@
 <?php
   require_once('notification.php');
-  require_once('config.php');               
+  require_once('config.php');  
+
+  function buildCategoryName($request): ?string
+  { 
+      $length = count($request);
+      for($i=1; $i<$length; $i++)
+      { 
+        $CategoryName = $request[$i];
+      } 
+      return $CategoryName;
+  }  
+
+  function buildCategoryId($db)
+  {
+    
+  }  
 
   function checkData($dataForCheck): bool
   {
@@ -105,7 +120,7 @@
               sendMessage(UNSCRIBE_MESSAGE, $chatId);
               break;
           case SUBSCRIBE_COMAND:
-              
+              $categoryName = buildCategoryName($request);
               break;
           default: 
               sendMessage(USER_ERROR_MESSAGE, $chatId);
