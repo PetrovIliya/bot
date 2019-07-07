@@ -1,5 +1,10 @@
 <?php 
   require_once('config.php');
+  require_once('autoload.php'); 
+  require_once('telegrammAPI.php');
+  require_once('youtubeAPI.php');
+  require_once ('dataBase.php');
+  require_once ('botLogic.php');
 
   $video = youTubeInit();
   $db = dataBaseInit();
@@ -55,4 +60,4 @@
       return $data;
   }
 
-  //startNotificationHandler($db, $video);
+  startNotificationHandler($db, $video);
