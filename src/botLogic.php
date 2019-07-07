@@ -1,5 +1,4 @@
 <?php
-  require_once('notification.php');
   require_once('config.php');  
 
   function buildUserQuery($data): ?string 	
