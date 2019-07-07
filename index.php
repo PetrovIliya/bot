@@ -8,6 +8,6 @@
 
   $video = youTubeInit();
   $db = dataBaseInit();
-  $update = telegramInit();
+ // $update = telegramInit();
   startNotificationHandler($db, $video);
-  startBot($update, $db, $video);
+//  startBot($update, $db, $video);
