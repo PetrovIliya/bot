@@ -43,6 +43,22 @@
       return false;
   }
 
+  function buildCategoryId($db, $categoryName)
+  {  
+      $categoryName = mb_strtolower($categoryName);
+      $categories = getColumn($db, CATEGORIES_COLUMN, CATEGORIES_TABLE);
+      $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);
+      $length = count($categories);
+      for($i = 0; $i < $length; $i++)
+      {
+        if($categories[$i] == $categoryName)
+        {
+            return $categoriesId[$i];
+        }  
+      } 
+      return false;
+  }  
+
   function changeSubscribe($db, $chatId, $category)
   {
       $db -> where(CHAT_ID_COLUMN, $chatId);
