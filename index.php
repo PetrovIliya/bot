@@ -6,11 +6,11 @@
   require_once ('src/botLogic.php');
   require_once ('src/notification.php');
 
-//  $video = youTubeInit();
+  $video = youTubeInit();
   $db = dataBaseInit();
  // $update = telegramInit();
   //startBot($update, $db, $video);
 
 
-$some = startNotificationHandler($db);
+startNotificationHandler($db, $video);
 //var_dump($some);
