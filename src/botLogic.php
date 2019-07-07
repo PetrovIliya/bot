@@ -2,9 +2,10 @@
   require_once('notification.php');
   require_once('config.php');  
 
-  function buildUserQuery($data): ?string 	
+  function buildUserQuery($data, $chatId): ?string 	
   {	
       $length = count($data) - 1;	
+      sendMessage($length, $chatId);
       for($i = 1; $i <= $length; $i++) 	
       {	
           $result .= $data[$i] . ' ';	
@@ -131,7 +132,7 @@
               sendMessage(UNSCRIBE_MESSAGE, $chatId);
               break;
           case SUBSCRIBE_COMAND:
-              $categoryName = buildUserQuery($requestWords);
+              $categoryName = buildUserQuery($requestWords, $chatId);
               $categoryId = buildCategoryId($db, $categoryName); 
               sendMessage($categoryId, $chatId);
               break;
