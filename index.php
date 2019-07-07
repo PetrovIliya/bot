@@ -10,6 +10,6 @@
   //$update = telegramInit();
 
   
-  $test = $video -> getPopularVideosByCategory('Шоу');
+  $test = $video -> getPopularVideosByCategory('Pi8WVQUPtQk');
   var_dump($test);
  // startBot($update, $db, $video);
