@@ -26,6 +26,7 @@
   const PARAMETRS_ERROR_MESSAGE = 'не верно указаны параметры';
   const QUANTINTY_ERROR_MESSAGE = '<количество> - должно быть целым числом';
   const MAX_QUANTINTY_ERROR_MESSAGE = '<количество> - не может превышать 10';
+  const FATAL_ERROR_MESSAGE = 'Произошла критическая ошибка, пожалуйста повторите запрос';
   const UNSCRIBE_MESSAGE = 'Вы успешно отписаны от уведомлений';
   const TOP_VIDEO_MESSAGE = 'Топовые видео на сегодня по категории: ';
   const USER_ERROR_MESSAGE = 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса <команды>"';
