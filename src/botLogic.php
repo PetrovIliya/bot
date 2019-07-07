@@ -2,19 +2,20 @@
   require_once('notification.php');
   require_once('config.php');  
 
-  function buildCategoryName($request): ?string
-  { 
-      $length = count($request);
-      for($i=1; $i<$length; $i++)
-      { 
-        $CategoryName = $request[$i];
-      } 
-      return $CategoryName;
-  }  
+  function buildUserQuery($data): ?string 	
+  {	
+      $length = count($data) - 1;	
+      for($i=1; $i<$length; $i++) 	
+      {	
+          $result .= $data[$i] . ' ';	
+      }	
+      return $result;	
+  }
 
-  function buildCategoryId($db)
+  function buildCategoryId($db, $categoryName)
   {
-    
+      $categories = getColumn($db, CATEGORIES_COLUMN, CATEGORIES_TABLE);
+      $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);
   }  
 
   function checkData($dataForCheck): bool
@@ -51,7 +52,7 @@
   function videoLogicHandler($video, $db, $chatId, $userId, $requestWords)
   {
       $lastWord = end($requestWords);
-      $query = $video -> buildVideoName($requestWords);
+      $query = buildUserQuery($requestWords);
       if($query && $lastWord) 
       {
          sendingVideoHandler($video, $db, $query, $lastWord, $chatId, $userId);
@@ -84,7 +85,7 @@
 
   function categoriesLogicHandler($db, $chatId)
   {
-       $categories = getColumn($db, 'categoriesName', 'categories');
+       $categories = getColumn($db, CATEGORIES_COLUMN, CATEGORIES_TABLE);
        foreach($categories as $category)
        {
            sendMessage($category, $chatId);
@@ -120,7 +121,7 @@
               sendMessage(UNSCRIBE_MESSAGE, $chatId);
               break;
           case SUBSCRIBE_COMAND:
-              $categoryName = buildCategoryName($request);
+              $categoryName = buildUserQuery($requestWords);
               break;
           default: 
               sendMessage(USER_ERROR_MESSAGE, $chatId);
