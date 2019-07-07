@@ -4,7 +4,6 @@
 
   $video = youTubeInit();
   $db = dataBaseInit();
-  $update = telegramInit();
 
   function buildData($db)
   {
