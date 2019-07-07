@@ -3,10 +3,7 @@
   require_once('config.php');
   
   function test($db) 
-  {
-      $usersByCategory = $db->rawQuery('SELECT DISTINCT(chatId)
-                                        FROM users
-                                        WHERE userCategory = ' . $id);  
+  { 
       $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);  
       foreach($categoriesId as $id)
       {
