@@ -10,7 +10,7 @@
   //$update = telegramInit();
 
   
-  $test = $video -> getPopularVideosByCategory('1');
+  $test = $video -> getPopularVideosByCategory('1', 1);
   <pre>
   <?php  
   var_dump($test);
