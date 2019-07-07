@@ -7,6 +7,7 @@
       $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);  
       foreach($categoriesId as $id)
       {
+          $temp = NULL;
           $chatIdsByCategory = $db->rawQuery('SELECT DISTINCT(chatId)
                                             FROM users
                                             WHERE userCategory = ' . $id);
