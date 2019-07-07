@@ -29,7 +29,7 @@
   const UNSCRIBE_MESSAGE = 'Вы успешно отписаны от уведомлений';
   const TOP_VIDEO_MESSAGE = 'Топовые видео на сегодня по категории: ';
   const USER_ERROR_MESSAGE = 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса <команды>"';
-  const SUBSCRIBE_MESSAGE = 'Вы были подписаны на категорию ';
+  const SUBSCRIBE_MESSAGE = 'Вы были подписаны на уведомления по теме: ';
   const DEFAULT_TOP_VIDEO_QUANTINTY = 5;
   const DEFAULT_HISTORY_QUANTINTY = 5;
   const DEFALT_CATEGORY = 'развлечения';
