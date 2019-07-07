@@ -11,6 +11,6 @@
 
   $some = $video -> getCategory();
   
-  $test = $video -> getPopularVideosByCategory($some[0]);
-  var_dump($test);
+  //$test = $video -> getPopularVideosByCategory($some[0]);
+  var_dump($some);
  // startBot($update, $db, $video);
