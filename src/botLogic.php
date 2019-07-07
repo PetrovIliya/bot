@@ -7,7 +7,14 @@
       $length = count($data) - 1;	
       for($i = 1; $i <= $length; $i++) 	
       {	
-          $result .= $data[$i] . ' ';	
+          if($length == $i)
+          {
+              $result .= $data[$i];
+          }  
+          else
+          {
+            $result .= $data[$i] . ' ';
+          }	
       }	
       return $result;	
   }
