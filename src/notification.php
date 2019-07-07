@@ -1,11 +1,20 @@
 <?php 
-    require_once(dirname(__FILE__).'/../index.php');
-    require_once('config.php');
-    
-    function test($chatId, $db) 
-    {
-        $userIds = $db->rawQuery('SELECT DISTINCT(userId)
-                                    FROM history');
-     
-         
-    }
+  require_once(dirname(__FILE__).'/../index.php');
+  require_once('config.php');
+  
+  function test($db) 
+  {
+      $usersByCategory = $db->rawQuery('SELECT DISTINCT(chatId)
+                                        FROM users
+                                        WHERE userCategory = ' . $id);  
+      $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);  
+      foreach($categoriesId as $id)
+      {
+          $chatIdsByCategory = $db->rawQuery('SELECT DISTINCT(chatId)
+                                            FROM users
+                                            WHERE userCategory = ' . $id);  
+          $result[$id] = $chatIdsByCategory;
+          retern $result;
+      }    
+       
+  }
