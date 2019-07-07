@@ -2,6 +2,10 @@
   require_once(dirname(__FILE__).'/../index.php');
   require_once('config.php');
 
+  $video = youTubeInit();
+  $db = dataBaseInit();
+  $update = telegramInit();
+
   function buildData($db)
   {
       $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);  
