@@ -93,7 +93,13 @@
        }  
   }  
 
- 
+ function subscribeLogicHandler($db, $requestWords, $chatId)
+ {
+      $categoryName = buildUserQuery($requestWords);
+      $categoryId = buildCategoryId($db, $categoryName); 
+      changeSubscribe($db, $chatId, $categoryId);
+      sendMessage(SUBSCRIBE_MESSAGE . $categoryName, $chatId);
+ }
 
   function botLogicHandler($db, $video, $request, $greatings, $chatId, $userId)
   {
@@ -122,10 +128,7 @@
               sendMessage(UNSCRIBE_MESSAGE, $chatId);
               break;
           case SUBSCRIBE_COMAND:
-              $categoryName = buildUserQuery($requestWords);
-              $categoryId = buildCategoryId($db, $categoryName); 
-              changeSubscribe($db, $chatId, $categoryId);
-              sendMessage(SUBSCRIBE_MESSAGE . $categoryName, $chatId); 
+              subscribeLogicHandler($db, $requestWords, $chatId);
               break;
           default: 
               sendMessage(USER_ERROR_MESSAGE, $chatId);
