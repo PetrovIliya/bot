@@ -48,6 +48,6 @@
   function startNotificationHandler($db, $video) 
   { 
       $data = buildData($db);
-      sendNotification($data);
+      sendNotification($data, $video);
       return $data;
   }
