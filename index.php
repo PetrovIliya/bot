@@ -11,8 +11,10 @@
 
   
   $test = $video -> getPopularVideosByCategory('1', 1);
+  ?>
   <pre>
   <?php  
-  var_dump($test);
+  var_dump($test); 
   <pre> 
+  <?php  
  // startBot($update, $db, $video);
