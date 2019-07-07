@@ -1,9 +1,9 @@
 <?php 
   require_once(dirname(__FILE__).'/../index.php');
   require_once('config.php');
-  
-  function test($db) 
-  { 
+
+  function buildData($db)
+  {
       $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);  
       foreach($categoriesId as $id)
       {
@@ -19,4 +19,10 @@
           $result[$id] = $temp;
       }    
       return $result; 
+  }  
+  
+  function startNotificationHandler($db) 
+  { 
+      $data = buildData($db);
+      retern $data;
   }
