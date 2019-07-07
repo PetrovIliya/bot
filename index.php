@@ -8,7 +8,9 @@
   $video = youTubeInit();
   //$db = dataBaseInit();
   //$update = telegramInit();
+
+  $some = getCategory();
   
-  $test = $video -> getPopularVideosByCategory('Шоу');
+  $test = $video -> getPopularVideosByCategory($some[0]);
   var_dump($test);
  // startBot($update, $db, $video);
