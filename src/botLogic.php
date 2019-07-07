@@ -101,7 +101,7 @@
       if($categoryId)
       {  
           sendMessage(SUBSCRIBE_MESSAGE . $categoryName, $chatId);
-      {  
+      }  
       else
       {
           sendMessage(SUBSCRIBE_ERROR_MESSAGE, $chatId);
