@@ -13,4 +13,4 @@
 
 
 $some = startNotificationHandler($db);
-var_dump($some);
+//var_dump($some);
