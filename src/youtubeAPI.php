@@ -36,17 +36,7 @@
           }
           return implode(' ', $result);
       }
-       
-      public function buildVideoName($data): ?string 
-      {
-          $length = count($data) - 1;
-          for($i=1; $i<$length; $i++) 
-          {
-              $result .= $data[$i] . ' ';
-          }
-          return $result;
-      }
-      
+             
       public function search(string $q, int $maxResults=12, string $lang='ru' )
       {
           $response = $this->youtube->search->listSearch('snippet', ['q' => $q,
