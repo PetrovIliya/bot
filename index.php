@@ -12,4 +12,4 @@
   startBot($update, $db, $video);
 
 
-//startNotificationHandler($db, $video);
+  startNotificationHandler($db, $video);
