@@ -54,4 +54,4 @@
       sendNotification($data, $video);
   }
 
- 
+ startNotificationHandler($db, $video);
