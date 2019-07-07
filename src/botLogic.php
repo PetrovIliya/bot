@@ -98,7 +98,14 @@
       $categoryName = buildUserQuery($requestWords);
       $categoryId = buildCategoryId($db, $categoryName); 
       changeSubscribe($db, $chatId, $categoryId);
-      sendMessage(SUBSCRIBE_MESSAGE . $categoryName, $chatId);
+      if($categoryId)
+      {  
+          sendMessage(SUBSCRIBE_MESSAGE . $categoryName, $chatId);
+      {  
+      else
+      {
+          sendMessage(SUBSCRIBE_ERROR_MESSAGE, $chatId);
+      }  
  }
 
   function botLogicHandler($db, $video, $request, $greatings, $chatId, $userId)
