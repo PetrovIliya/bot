@@ -123,9 +123,8 @@
               break;
           case SUBSCRIBE_COMAND:
               $categoryName = buildUserQuery($requestWords);
-              sendMessage($categoryName, $chatId); 
               $categoryId = buildCategoryId($db, $categoryName); 
-              sendMessage($categoryId, $chatId);
+              
               break;
           default: 
               sendMessage(USER_ERROR_MESSAGE, $chatId);
