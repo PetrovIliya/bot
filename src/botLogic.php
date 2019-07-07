@@ -114,7 +114,7 @@
       $firstWord = mb_strtolower($requestWords[0]);
       switch ($firstWord): 
           case START_COMMAND: 
-              sendMessage($greatings, $chatId);
+              sendMessage($greetings, $chatId);
               autoSubscribe($db, $chatId);
               break;
           case ALL_COMMANDS_COMMAND:
@@ -148,13 +148,13 @@
       $firstName = $update['message']['from']['first_name'];
       $lastName = $update['message']['from']['last_name'];
       $request = $update['message']['text'];
-      $greatings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
+      $greetings = 'Добро пожаловать ' . $firstName . ' ' . $lastName . '!';
       $dataForCheck = [$chatId, $userId, $request];
       $isCorrect = checkData($dataForCheck);
       showKeyboard($chatId);   
       if($isCorrect)
       {   
-          botLogicHandler($db, $video, $request, $greatings, $chatId, $userId);
+          botLogicHandler($db, $video, $request, $greetings, $chatId, $userId);
       }  
       else
       {
