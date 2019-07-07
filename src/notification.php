@@ -52,7 +52,6 @@
   { 
       $data = buildData($db);
       sendNotification($data, $video);
-      return $data;
   }
 
  
