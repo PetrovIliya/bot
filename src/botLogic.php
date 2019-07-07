@@ -4,7 +4,7 @@
 
   function buildUserQuery($data): ?string 	
   {	
-      $length = count($data) - 1;	
+      $length = count($data);	
       for($i = 1; $i <= $length; $i++) 	
       {	
           $result .= $data[$i] . ' ';	
