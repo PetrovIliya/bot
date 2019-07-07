@@ -1,6 +1,6 @@
 <?php 
   require_once('config.php');
-  require_once('autoload.php'); 
+  require_once(dirname(__FILE__).'/../vendor/autoload.php'); 
   require_once('telegrammAPI.php');
   require_once('youtubeAPI.php');
   require_once ('dataBase.php');
