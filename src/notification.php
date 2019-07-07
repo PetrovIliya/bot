@@ -29,8 +29,8 @@
           {
               foreach($value as $val)
               {
-                  echo $key . ' ' . $val;
-                  
+                  //echo $key . ' ' . $val;
+                  sendMessage('all right', $val);
               }  
           }  
       }  
