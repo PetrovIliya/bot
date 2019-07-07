@@ -5,7 +5,6 @@
   function test($db) 
   { 
       $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);  
-      var_dump($categoriesId);
       foreach($categoriesId as $id)
       {
           $chatIdsByCategory = $db->rawQuery('SELECT DISTINCT(chatId)
