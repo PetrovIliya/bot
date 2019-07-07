@@ -12,5 +12,5 @@
   //startBot($update, $db, $video);
 
 
-$some = test($db);
+$some = startNotificationHandler($db);
 var_dump($some);
