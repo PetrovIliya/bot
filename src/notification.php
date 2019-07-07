@@ -24,5 +24,5 @@
   function startNotificationHandler($db) 
   { 
       $data = buildData($db);
-      retern $data;
+      return $data;
   }
