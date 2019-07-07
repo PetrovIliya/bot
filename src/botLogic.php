@@ -76,6 +76,8 @@
        }  
   }  
 
+ 
+
   function botLogicHandler($db, $video, $request, $greatings, $chatId, $userId)
   {
       $requestWords = str_word_count($request, 1, EXCEPTIONS);
@@ -103,7 +105,7 @@
               sendMessage(UNSCRIBE_MESSAGE, $chatId);
               break;
           case SUBSCRIBE_COMAND:
-             // subscribe($db, $chatId);
+              
               break;
           default: 
               sendMessage(USER_ERROR_MESSAGE, $chatId);
