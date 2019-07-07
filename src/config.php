@@ -14,6 +14,7 @@
   const USER_ID_COLUMN = 'userId';
   const USER_QUERY_COLUMN = 'userQuery';
   const CATEGORIES_COLUMN = 'categoriesName';
+  const CATEGORIES_ID_COLUMN = 'categoriesId';
   const USER_CATEGORY_COLUMN = 'userCategory';
   const CATEGORIES_TABLE = 'categories';
   const HISTORY_TABLE = 'history';
