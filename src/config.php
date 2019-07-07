@@ -19,7 +19,7 @@
   const CATEGORIES_TABLE = 'categories';
   const HISTORY_TABLE = 'history';
   const USERS_TABLE = 'users';
-  const DEFAULT_CATEGORY = 'Развлечения';
+  const DEFAULT_CATEGORY = 24;
   const UNSCRIBED = NULL;
   const PARAMETRS_ERROR_MESSAGE = 'не верно указаны параметры';
   const QUANTINTY_ERROR_MESSAGE = '<количество> - должно быть целым числом';
