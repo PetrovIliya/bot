@@ -27,6 +27,7 @@
   function sendTopVideos($video, $category, $chatId)
   {
        $videoInfo = $video -> getPopularVideosByCategory($category, DEFAULT_TOP_VIDEO_QUANTINTY);
+       sendMessage(TOP_VIDEO_MESSAGE . $category, $chatId);
        for($i=0; $i < DEFAULT_TOP_VIDEO_QUANTINTY; $i++)
        {  
            $videoId = $videoInfo["items"][$i]["id"];
