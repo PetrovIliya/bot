@@ -26,6 +26,7 @@
   const QUANTINTY_ERROR_MESSAGE = '<количество> - должно быть целым числом';
   const MAX_QUANTINTY_ERROR_MESSAGE = '<количество> - не может превышать 10';
   const UNSCRIBE_MESSAGE = 'Вы успешно отписаны от уведомлений';
+  const TOP_VIDEO_MESSAGE = 'Топовые видео на сегодня по категории: ';
   const USER_ERROR_MESSAGE = 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса <команды>"';
   const SUBSCRIBE_MESSAGE = 'Вы были подписаны на категорию ';
   const DEFAULT_TOP_VIDEO_QUANTINTY = 5;
