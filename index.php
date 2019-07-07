@@ -11,7 +11,7 @@
 
   
   $test = $video -> getPopularVideosByCategory('1', 1);
-  $item = $test[items[0]]['id'];
+  $item = $test["items"];
   var_dump($item);
   ?>
   <pre>
