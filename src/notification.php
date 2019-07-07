@@ -14,7 +14,7 @@
                                             FROM users
                                             WHERE userCategory = ' . $id);  
           $result[$id] = $chatIdsByCategory;
-          retern $result;
+          return $result;
       }    
        
   }
