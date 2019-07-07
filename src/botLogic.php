@@ -158,6 +158,6 @@
       }  
       else
       {
-          sendMessage('Произошла ошибка по техническим причинам, пожалуйста повторите попытку', $chatId);
+          sendMessage(FATAL_ERROR_MESSAGE, $chatId);
       }  
   }
