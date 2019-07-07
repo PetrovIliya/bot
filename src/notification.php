@@ -56,4 +56,4 @@
       return $data;
   }
 
-  startNotificationHandler($db, $video);
+  //startNotificationHandler($db, $video);
