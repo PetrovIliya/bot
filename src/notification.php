@@ -52,4 +52,4 @@
       return $data;
   }
 
-  startNotificationHandler($db, $video)ж 
+  startNotificationHandler($db, $video);
