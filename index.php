@@ -11,6 +11,8 @@
 
   
   $test = $video -> getPopularVideosByCategory('1', 1);
+  $item = $test['items[0]']['id'];
+  echo $item;
   ?>
   <pre>
   <?php  
