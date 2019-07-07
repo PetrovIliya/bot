@@ -29,7 +29,8 @@
           {
               foreach($value as $val)
               {
-                  echo $key;
+                  echo $key . ' ' . $val;
+                  
               }  
           }  
       }  
