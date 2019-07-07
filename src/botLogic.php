@@ -69,7 +69,7 @@
   function videoLogicHandler($video, $db, $chatId, $userId, $requestWords)
   {
       $lastWord = end($requestWords);
-      $query = buildUserQuery($requestWords);
+      $query = $video -> buildVideoName($requestWords);
       if($query && $lastWord) 
       {
          sendingVideoHandler($video, $db, $query, $lastWord, $chatId, $userId);
