@@ -5,7 +5,7 @@
   function buildUserQuery($data): ?string 	
   {	
       $length = count($data) - 1;	
-      for($i=1; $i<$length; $i++) 	
+      for($i = 1; $i < $length; $i++) 	
       {	
           $result .= $data[$i] . ' ';	
       }	
@@ -13,9 +13,19 @@
   }
 
   function buildCategoryId($db, $categoryName)
-  {
+  {  
+      $categoryName = mb_strtolower($categoryName);
       $categories = getColumn($db, CATEGORIES_COLUMN, CATEGORIES_TABLE);
       $categoriesId = getColumn($db, CATEGORIES_ID_COLUMN, CATEGORIES_TABLE);
+      $length = count($categories);
+      for($i = 0; $i <= $length; $i++)
+      {
+        if($categories[$i] == $categoryName)
+        {
+            return $categoriesId[$i];
+        }  
+      } 
+      return false;
   }  
 
   function checkData($dataForCheck): bool
@@ -122,6 +132,7 @@
               break;
           case SUBSCRIBE_COMAND:
               $categoryName = buildUserQuery($requestWords);
+              $categoryId = buildCategoryId($db, $categoryName); 
               break;
           default: 
               sendMessage(USER_ERROR_MESSAGE, $chatId);
