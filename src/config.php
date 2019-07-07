@@ -26,6 +26,7 @@
   const MAX_QUANTINTY_ERROR_MESSAGE = '<количество> - не может превышать 10';
   const UNSCRIBE_MESSAGE = 'Вы успешно отписаны от уведомлений';
   const USER_ERROR_MESSAGE = 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса <команды>"';
+  const SUBSCRIBE_MESSAGE = 'Вы были подписаны на категорию ';
   const DEFAULT_HISTORY_QUANTINTY = 5;
   const DEFALT_CATEGORY = 'развлечения';
   const MAX_VIDEOS = 10;
