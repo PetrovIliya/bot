@@ -9,8 +9,13 @@
       {
           $chatIdsByCategory = $db->rawQuery('SELECT DISTINCT(chatId)
                                             FROM users
-                                            WHERE userCategory = ' . $id);  
-          $result[$id] = $chatIdsByCategory;
+                                            WHERE userCategory = ' . $id);
+          $length = count($chatIdsByCategory);
+          for($i = 0; $i < $length; $i++)
+          {
+              $temp[$i] = $chatIdsByCategory[$i]['chatId'];
+          }  
+          $result[$id] = $temp;
       }    
       return $result; 
   }
