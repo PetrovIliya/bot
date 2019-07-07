@@ -34,8 +34,8 @@
   const ALL_COMMANDS_COMMAND = 'команды';
   const HISTORY_COMMAND = 'история';
   const CATEGORIES_COMAND = 'категории';
-  const UNSCRIBE_COMMAND = 'отписаться';
-  const SUBSCRIBE_COMAND = 'подписаться';
+  const UNSCRIBE_COMMAND = 'отписатся';
+  const SUBSCRIBE_COMAND = 'подписатся';
   const EXCEPTIONS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789./?=-_:';  
   const COMMANDS = ['знаки "<" и ">" служат только для обозначения разделов команд, набирать их не стоит', 
                    'команды - список команд',
