@@ -5,7 +5,11 @@
   require_once ('src/dataBase.php');
   require_once ('src/botLogic.php');
 
-  $video = youTubeInit();
+//  $video = youTubeInit();
   $db = dataBaseInit();
-  $update = telegramInit();
-  startBot($update, $db, $video);
+ // $update = telegramInit();
+  //startBot($update, $db, $video);
+
+
+$some = test($db);
+var_dump($some);
