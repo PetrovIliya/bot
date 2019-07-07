@@ -20,9 +20,24 @@
       }    
       return $result; 
   }  
+
+  function sendNotification($data)
+  {
+      foreach($data as $key => $value)
+      {
+          if($value !== NULL)
+          {
+              foreach($value as $val)
+              {
+                  echo $key;
+              }  
+          }  
+      }  
+  }  
   
   function startNotificationHandler($db) 
   { 
       $data = buildData($db);
+      sendNotification($data);
       return $data;
   }
