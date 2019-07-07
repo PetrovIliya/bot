@@ -5,7 +5,7 @@
   function buildUserQuery($data, $chatId): ?string 	
   {	
       $length = count($data) - 1;	
-      sendMessage($length . $data[$length], $chatId]);
+      sendMessage($length . $data[$length], $chatId);
       for($i = 1; $i <= $length; $i++) 	
       {	
           $result .= $data[$i] . ' ';	
