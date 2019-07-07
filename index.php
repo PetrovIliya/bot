@@ -9,7 +9,7 @@
   //$db = dataBaseInit();
   //$update = telegramInit();
 
-  $some = getCategory();
+  $some = $video -> getCategory();
   
   $test = $video -> getPopularVideosByCategory($some[0]);
   var_dump($test);
