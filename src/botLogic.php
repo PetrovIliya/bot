@@ -107,7 +107,7 @@
       }  
  }
 
-  function botLogicHandler($db, $video, $request, $greatings, $chatId, $userId)
+  function botLogicHandler($db, $video, $request, $greetings, $chatId, $userId)
   {
       $requestWords = str_word_count($request, 1, EXCEPTIONS);
       $lastWord = end ($requestWords);
