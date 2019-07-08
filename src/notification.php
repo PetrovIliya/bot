@@ -27,10 +27,10 @@
   function sendTopVideos($video, $categoryId, $chatId)
   {
        $videoInfo = $video -> getPopularVideosByCategory($categoryId, DEFAULT_TOP_VIDEO_QUANTINTY);
-       $categoryName = $db->rawQuery('SELECT DISTINCT(categoriesName)
+     /*  $categoryName = $db->rawQuery('SELECT DISTINCT(categoriesName)
                                       FROM categories
-                                      WHERE categoriesId = ' . $categoryId);
-       sendMessage(TOP_VIDEO_MESSAGE . $categoryName[0]['categoriesName'], $chatId);
+                                      WHERE categoriesId = ' . $categoryId);*/
+       sendMessage(TOP_VIDEO_MESSAGE, $chatId);
        for($i=0; $i < DEFAULT_TOP_VIDEO_QUANTINTY; $i++)
        {  
            $videoId = $videoInfo["items"][$i]["id"];
