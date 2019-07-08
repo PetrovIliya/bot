@@ -28,7 +28,7 @@
   const MAX_QUANTINTY_ERROR_MESSAGE = '<количество> - не может превышать 10';
   const FATAL_ERROR_MESSAGE = 'Произошла критическая ошибка, пожалуйста повторите запрос';
   const UNSCRIBE_MESSAGE = 'Вы успешно отписаны от уведомлений';
-  const TOP_VIDEO_MESSAGE = 'Топовые видео на сегодня по категории: ';
+  const TOP_VIDEO_MESSAGE = 'Топовые видео на сегодня';
   const USER_ERROR_MESSAGE = 'Запрос не является командой, со списком доступных команд можно ознакомится с помощью запроса <команды>"';
   const SUBSCRIBE_MESSAGE = 'Теперь вы будете получать уведомления на тему ';
   const DEFAULT_TOP_VIDEO_QUANTINTY = 5;
